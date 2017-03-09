@@ -1,0 +1,83 @@
+\chapter{Alapfogalmak}
+
+A \emph{sokaság}, vagy populáció, a vizsgálat tárgyát képező nagyszámú, de véges elemszámú egyedek halmaza. A statisztika, mint tudomány célja a halmaz egészének kevés adattal történő tömör jellemzése és az egyedek leírására a bevezetett változók közötti kapcsolatok leírása. Nincs lehetőség (erőforrás), hogy a populáció minden egyes eleméről adatokat szerezzünk be. Példa sokaságok: ország állampolgárai, gyártott termékek. A statisztikai elemzés tárgya lehet egy \emph{véletlen kísérlet} is, ami időben változatlan körülmények között elvileg akárhányszor lejátszódhat, pl. terméshozam, lottóhúzás, véletlen egyed kiválasztása.
+
+A statisztikai minta \emph{realizáltja} a populáció egy kis elemszámú részhalmazára vonatkozó megfigyelések adatai. Például: hőmérséklet adatok, felmérésbe bevont nézők. A mintának reprezentatívnak kell lennie, vagyis tükröznie kell a populáció tulajdonságait. A populáció minden egyedének ugyanakkora esélyt kell biztosítani a mintába kerüléshez, a minta elemszámának pedig elég nagynak kell lennie ahhoz, hogy a következtetések átvihetők legyenek a populációra is. A mintavételezésnek 3 nagy kategóriája:
+\begin{itemize}
+\item Rétegzett mintavételezés: populációt adott szempontok szerint csoportokba osztjuk és a csoportok arányait a mintában is megtartjuk
+\item Véletlen mintavételezés: mintába kerülő egyedeket sorsolással választjuk ki
+\item Cenzus: népszámlálás
+\end{itemize}
+A mintát egy adatmátrixba írhatjuk fel, aminek $n$ sora és $p$ oszlopa van. Minden sor megfelel a minta egy elemének, minden oszlop pedig egy \emph{változónak}, a populáció egy mérhető jellemzőjének. 
+
+A \emph{statisztika} a minta realizáció adataiból adott képlettel számolt adat. Pl. átlag, medián, gyakoriság, stb.
+
+\section{Alapmodell}
+
+A matematikai statisztika alapmodellje 4 elemből áll:
+\begin{itemize}
+\item $\mathcal{K}$, a véletlen kísérlet,
+\item $\Omega$, a lehetséges kimenetelek halmaza,
+\item $\mathcal{A}$, a megfigyelhető események halmaza, és 
+\item $\mathcal{P}$, a lehetséges valószínűségi mértékek halmaza.
+\end{itemize}
+Az elemzés célja, hogy $\mathcal{P}$-ből kiválasszuk a tényleges valószínűséget, de legalább is egy jó helyettesítő egyedet.
+
+A matematikai alapmodellben a változó $X: \Omega \rightarrow \mathbb{R}$ egy valószínűségi változó, melynek minden $\mathbf{P} \in \mathcal{P}$ esetén megadható az eloszlásfüggvénye: $F_x(t)=\mathbf{P}(X<t)$. Ekkor a feladat a következő halmazból kiválasztani a vlóságot legjobban leíró eloszlásfüggvényt:
+
+$\mathcal{F}=\{F_x(t):F_x(t)=\mathbf{P}(X<t): \forall \mathbf{P} \in \mathcal{F}\}$
+
+A statisztikai minta ez alapján az $X$ valószínűségi változóval azonos eloszlású, egymással teljesen független $X_1, X_2, ... X_n$ valószínűségi változók együttese. Egy mintavételkor tulajdonképpem megfigyeljük a $\mathcal{K}$ véletlen kísérletet, aza megállapíTjük, hogy melyik $\omega \in \Omega$ kimenetel realizálódott. Az $X_1(\omega)=x_1, ..., X_n(\omega)=x_n$ szám n-est nevezzük a minta realizációjának.
+
+A statisztika egy valószínűségi változó, aminek eloszlásfüggvényét a minta eloszlásfüggvényéből lehet kiszámolni: $T_n=t_n(X_1,X_2,...,X_n)$. A statisztika számolt értéke az, amikor $t_n()$ argumentumába a mintarealizáció értékeit helyettesítjük.
+
+Adatcentrum statisztikái:
+\begin{itemize}
+\item átlag: $\displaystyle\frac{1}{n} \sum_{i=1}^n x_i$
+\item medián: $ m_n =
+  \begin{cases}
+    x_\frac{n+1}{2}       & \quad \text{ha } n \text{ páratlan}\\
+    \frac{x_\frac{n}{2}^*+x_\frac{n+1}{2}^*}{2}  & \quad \text{ha } n \text{ páros}\\
+  \end{cases}
+$
+\item módusz: leggyakrabban előforduló érték a mintában
+\end{itemize}
+
+Szóródást jellemző statisztikák:
+\begin{itemize}
+\item standard szórás: $\sqrt{\frac{1}{n-1}\sum_{i=1}^n(x_i - \bar{x})^2}$, ahol $\bar{x}$ az átlag
+\item variáció: $\frac{1}{n-1}\sum_{i=1}^n(x_i - \bar{x})^2$
+\item terjedelem: $x_n^*-x_1^*$ (legkisebb és legnagyobb elem közötti különbség)
+\end{itemize}
+
+Eloszlást jellemző statisztikák:
+\begin{itemize}
+\item ferdeség: $s=\frac{\frac{1}{n}\sum_{i=1}^n(x_i-\bar{x})^3}{\Big(\sqrt{\frac{1}{n-1}\sum_{i=1}^n(x_i - \bar{x})^2}\Big)^3}$, ha $s>0$, akkor jobbra ferdül, ha $s<0$, akkor balra ferdül
+\item lapultság: $k=\frac{\frac{1}{n}\sum_{i=1}^n(x_i-\bar{x})^4}{\Big(\sqrt{\frac{1}{n-1}\sum_{i=1}^n(x_i - \bar{x})^2}\Big)^4}-3$, ha $k>0$, akkor csúcsos, ha $k<0$, akkor lapos.
+\end{itemize}
+
+A mintaelemeket szokás rendezni is: $X_k^* = ord_k(X_1,X_2,...,X_n), k=1,2,...,n$\footnote{$ord()$ kiválasztja a $k$-dik legnagyobb elemet az argumentumok közül}. Ezeket rendezett mintaelem-statisztikáknak hívjuk. A minta eloszlásfüggvénye és a rendezett minta eloszlásfüggvénye között az alábbi összefüggés áll fenn:
+
+$F_k(x) = \mathbf{P}(X_k^* < x) = \sum_{i=k}^n \binom{n}{i} [F(x)]^i [1-F(x)]^{n-i}$
+
+A rendezett mintaelem-statisztikák közül különlegesen fontos az empirikus eloszlásfüggvény:
+
+$F_n(x) = 
+  \begin{cases}
+    0       & \quad \text{ha } x \leq X_1^* \\
+    \frac{k}{n}  & \quad \text{ha } X_k^* < x \leq X_{k+1}^*\\
+    1		& \quad \text{ha } x>X_n^* \end{cases}
+  $
+  
+Fontosságát a matematikai statisztika alaptétele adja:
+
+$\mathbf{P}\Big( \displaystyle\lim_{n \to \inf
+} sup_{x\in\mathbb{R}} |F_n(x)-F(x)| = 0 \Big) = 1$, vagyis az empirikus eloszlásfüggvény 1 valószínűséggel, egyenletesen konvergál az elolszlásfüggvényhez.
+
+\section{Fontos eloszlások}
+
+\begin{itemize}
+\item $\chi^2$ eloszlás
+\item Student-eloszlás
+\item F-eloszlás
+\end{itemize}
