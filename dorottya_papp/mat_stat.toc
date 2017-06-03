@@ -1,0 +1,13 @@
+\select@language {magyar} \contentsline {chapter}{\numberline {1}Alapfogalmak}{2}{chapter.1}
+\select@language {magyar} \contentsline {section}{\numberline {1.1}Alapmodell}{2}{section.1.1}
+\select@language {magyar} \contentsline {section}{\numberline {1.2}Fontos eloszl\IeC {\'a}sok}{4}{section.1.2}
+\select@language {magyar} \contentsline {chapter}{\numberline {2}Statisztikai becsl\IeC {\'e}sek}{5}{chapter.2}
+\select@language {magyar} \contentsline {section}{\numberline {2.1}Maximum likelihood becsl\IeC {\'e}s}{6}{section.2.1}
+\select@language {magyar} \contentsline {section}{\numberline {2.2}A momentumok m\IeC {\'o}dszere}{6}{section.2.2}
+\select@language {magyar} \contentsline {section}{\numberline {2.3}Intervallumbecsl\IeC {\'e}sek}{7}{section.2.3}
+\select@language {magyar} \contentsline {chapter}{\numberline {3}Hipot\IeC {\'e}ziselm\IeC {\'e}let}{8}{chapter.3}
+\select@language {magyar} \contentsline {section}{\numberline {3.1}Param\IeC {\'e}teres pr\IeC {\'o}b\IeC {\'a}k}{8}{section.3.1}
+\select@language {magyar} \contentsline {section}{\numberline {3.2}Nemparam\IeC {\'e}teres pr\IeC {\'o}b\IeC {\'a}k}{8}{section.3.2}
+\select@language {magyar} \contentsline {subsubsection}{Illeszked\IeC {\'e}s vizsg\IeC {\'a}lat}{9}{section.3.2}
+\select@language {magyar} \contentsline {subsubsection}{F\IeC {\"u}ggetlens\IeC {\'e}g vizsg\IeC {\'a}lat}{9}{section.3.2}
+\select@language {magyar} \contentsline {subsubsection}{Homogenit\IeC {\'a}s vizsg\IeC {\'a}lat}{10}{section.3.2}

@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper,oneside]{report}             % Single-side
+\documentclass[11pt,a4paper,oneside]{report}             % Single-side
 %\documentclass[11pt,a4paper,twoside,openright]{report}  % Duplex
 
 %\PassOptionsToPackage{chapternumber=Huordinal}{magyar.ldf}
@@ -24,8 +24,8 @@
 \usepackage{subcaption}
 \usepackage{sectsty}
 \usepackage{wrapfig}
-\usepackage{mathtools}
-\usepackage{calrsfs}
+\usepackage{multirow}
+\usepackage{textcomp}
 %--------------------------------------------------------------------------------------
 % Main variables
 %--------------------------------------------------------------------------------------
@@ -33,7 +33,7 @@
 \newcommand{\vikkonzulens}{}
 \newcommand{\vikcim}{Matematikai statisztika}
 \newcommand{\viktanszek}{Hálózati Rendszerek és Szolgáltatások Tanszék}
-\newcommand{\vikdoktipus}{Összefoglaló}
+\newcommand{\vikdoktipus}{Tételsor kidolgozás}
 \newcommand{\vikdepartmentr}{}
 
 %--------------------------------------------------------------------------------------
@@ -47,7 +47,7 @@
 \pagestyle{plain}
 %\setlength{\parindent}{0pt} % áttekinthetõbb, angol nyelvû dokumentumokban jellemzõ
 %\setlength{\parskip}{8pt plus 3pt minus 3pt} % áttekinthetõbb, angol nyelvû dokumentumokban jellemzõ
-\setlength{\parindent}{12pt} % magyar nyelvû dokumentumokban jellemzõ
+\setlength{\parindent}{10pt} % magyar nyelvû dokumentumokban jellemzõ
 \setlength{\parskip}{0pt}    % magyar nyelvû dokumentumokban jellemzõ
 
 \marginsize{35mm}{25mm}{15mm}{15mm} % anysize package
@@ -57,7 +57,7 @@
 
 \setcounter{secnumdepth}{2}
 \singlespacing
-%\frenchspacing
+\frenchspacing
 
 %--------------------------------------------------------------------------------------
 %	Setup hyperref package
@@ -118,9 +118,19 @@
 \title{\viktitle}
 \includeonly{
 	titlepage,%
-	alapfogalmak,%
-	becslesek,%
-	hipoteziselmelet
+	chapter_1,%
+	chapter_2,%
+	chapter_3,%
+	chapter_4,%
+	chapter_5,%
+	chapter_6,%
+	chapter_7,%
+	chapter_8,%
+	chapter_9,%
+	chapter_10,%
+	chapter_11,%
+	chapter_12,
+	chapter_13
 }
 %--------------------------------------------------------------------------------------
 %	Setup captions
@@ -144,7 +154,7 @@ aboveskip=10pt}
 \pagenumbering{arabic}
 
 \linespread{1.0}
-\setlength{\parindent}{12pt}
+\setlength{\parindent}{0.01em}
 \setlength{\parskip}{0.01em}
 \titlespacing*{\section}
 {0pt}{1.0em plus .1em minus .2em}{.5em plus .2em}
@@ -153,16 +163,27 @@ aboveskip=10pt}
 
 \include{titlepage}
 \tableofcontents\vfill
-\include{alapfogalmak}
-\include{becslesek}
-\include{hipoteziselmelet}
+\setlength{\parskip}{0.5em}
+\include{chapter_1}
+\include{chapter_2}
+\include{chapter_3}
+\include{chapter_4}
+\include{chapter_5}
+\include{chapter_6}
+\include{chapter_7}
+\include{chapter_8}
+\include{chapter_9}
+\include{chapter_10}
+\include{chapter_11}
+\include{chapter_12}
+\include{chapter_13}
 
 %\listoffigures\addcontentsline{toc}{chapter}{Ábrák jegyzéke}
 %\listoftables\addcontentsline{toc}{chapter}{Táblázatok jegyzéke}
 
-\bibliography{mybib}
-\addcontentsline{toc}{chapter}{Irodalomjegyzék}
-\bibliographystyle{plain}
+%\bibliography{mybib}
+%\addcontentsline{toc}{chapter}{Irodalomjegyzék}
+%\bibliographystyle{plain}
 
 \include{appendices}
 

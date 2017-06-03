@@ -1,0 +1,69 @@
+%----------------------------------------------------------------------------
+\chapter{Faktor- és főkomponensanalízis}
+
+
+\section{Faktoranalízis}
+
+Nagyszámú, sztochasztikusan erősen összefüggő változónk van, amik redundáns információt hordoznak. A célunk a változók számának csökkentése, de úgy, hogy ezáltal a megfigyelésekben rejlő információ ne csökkenjen lényegesen. Így nehezen megadható fogalmakat definiálhatunk összetett mutatórendszerrel való jellemzés útján. Alapvetően abban különbözik a regresszióanalízistól, hogy a prediktor változók a vizsgálat megkezdésekor nem ismertek, azok előállítása és értelmezése a feladat.
+
+A módszerek általában számolásigényesek és számítógépes programcsomagok segítségével hajthatók végre. Amennyiben többdimenziós normális eloszlásúak a megfigyelések, ezek a módszerek bizonyos optimumtulajdonságokkal rendelkeznek.
+
+A faktoranalízis csak akkor eredményes, ha a vizsgált változók között erős összefüggések vannak. Az összefüggés erejének mérésére több statisztikai is létezik:
+\begin{itemize}
+\item \emph{Kaiser-Meyer-Olkin statisztika:} változók közötti korrelációs együtthatókkal számol. $0,5$ alatt elfogadhatatlan az összefüggés, $0,9$ fölött csodálatos, a kettő között $0,1$-enként lépeget. A statisztika képlete:
+
+$KMO = \frac{\Sigma_{i=1}^p \Sigma_{j=1, j\neq i}^p R_{ij}^2}{\Sigma_{i=1}^p \Sigma_{j=1, j\neq i}^p \big(\frac{R_{ij}}{\sqrt{R_{ii}\cdot R_{jj}}} \big)^2 + \Sigma_{i=1}^p \Sigma_{j=1, j\neq i}^p R_{ij}^2}$
+
+\item \emph{Minta-alkalmassági érték (MSA):} megadja, hogy az indulási $p$ változóból melyikeket érdemes elhagyni (amelyeknél az $MSA_i$ érték a legkisebb). A statisztika képlete:
+
+$MSA_i = \frac{\Sigma_{i \neq j} R_{ij}^2}{\Sigma_{i \neq j} \big( \frac{R_{ij}}{\sqrt{R_{ii}\cdot R_{jj}}} \big)^2 + \Sigma_{i \neq j} R_{ij}^2}$, $i = (1,2,...,p)$
+
+\item \emph{Bartlett-féle gömb-próba:} a nullhipotézis, hogy a vizsgált változók függetlenek egymástól. Akkor érdemes továbbmenni, ha ez a próba nem szignifikáns, vagyis a változók között kapcsolat van
+\end{itemize}
+
+A $k$-faktoros modellben adottak az $X_1, ..., X_p$ változók, a belőlük alkotott $p$-dimenziós vektor, $\underline{X}$. A vektorról az következő összefüggést tételezzük fel: $\underline{X} = \underline{\underline{A}} \cdot \underline{F} + \underline{U} + \mathbf{E}\underline{X}$, a jelöléseleket a \ref{fig:k-modell}. táblázat mutatja. A faktoranalízist teljesen behatárolja a változók korrelációs mátrixának felépítése. Az átviteli mártixszal pont ezt a korrelációs struktúrát tudjuk feltárni, leírni (adatmátrix $\rightarrow$ korrelációs mátrix $\rightarrow$ átviteli mátrix).
+
+\begin{table}[h]
+\centering
+\caption{$k$-faktoros modell jelölései} \label{fig:k-modell}
+\begin{tabular}{|l|l|}
+\hline
+Jelölés & Név
+\\ \hline
+$\underline{\underline{A}}$ & $p$x$k$-s átviteli mátrix
+\\ \hline
+$\underline{F}$ & $k$-dimenziós közös faktor-vektor
+\\ \hline
+$\underline{U}$ & $p$-dimenziós egyedi faktor-vektor
+\\ \hline
+\end{tabular}
+\end{table}
+
+A modellel csak akkor érdemes tovább foglalkozni, ha
+\begin{itemize}
+\item $\underline{F}$ elemei páronként korrelálatlanok, várható értékük 0 és varianciájuk 1,
+\item $\underline{U}$ elemei páronként korrelálatlanok, várható értékük 0 és varianciájuk $\Psi_{ii}$ és
+\item $\underline{F}$ és $\underline{U}$ elemei páronként korrelálatlanok.
+\end{itemize}
+
+Egy $k$-faktoros modell pontosan akkor oldható meg, ha $\underline{X}$ kovariancia mátrixa megegyezik $\underline{\underline{A}} \cdot \underline{\underline{A}}^T +\underline{\underline{\Psi}}$, ahol $\Psi$ $\underline{U}$ kovariancia mátrixa. Ekkor van $p(p+1)/2$ egyenletünk és $p(k+1)$ ismeretlenünk. Amennyiben az egyenletrendszerben kevesebb az egyenlet, mint a változó, különböző kényszerfeltételeket adunk meg, amelyek más-más átviteli mátrixhoz vezetnek. Ezek közül azt választjuk, amelyiknek a legnagyobb a magyarázó ereje.
+
+Az átviteli mátrix együtthatói ($a_{ij}$) jelölik az $X_i$ és $F_j$ közötti kovarianciát, az $\frac{a_{ij}}{\mathbf{D}X_i}$ hányados a közöttük lévő korrelációt adja meg, a $\frac{\Sigma_{j=1}^k a^2_{ij}}{\mathbf{D}^2X_i}$ pedig megadja, hogy a közös faktorok az $i$-dik változó hány \%-át magyarázzák.
+
+A \emph{kommunalitás} ($\mathbf{D}^2X_i = \Sigma_{j=1}^k a^2_{ij} + \mathbf{D}^2U_i$) a változók varianciájának az a része, amit a közös faktorok magyaráznak.
+
+\subsection{Faktorok forgatása}
+
+Az átviteli mátrix egyértelművé tétele segíti a becslési eljárások matematikai elemzését, de az az ára, hogy a kapott közös faktorok nehezen értelmezhetőek. Alkalmas elforgatással esetleg szemléletesebb jelentést tudunk adni a faktoroknak:
+\begin{itemize}
+\item \emph{Varimax} forgatás esetén azon változók száma kevés lesz, melyekhez sok faktor szerepel nagy súllyal. Célja, hogy minél több 0-hoz közeli faktorsúlyt állítson elő. Ez azért előnyös, mert ha a faktorsúlyok 0-közeliek, akkor a változókat csoportosíthatjuk aszerint, hogy melyik faktor magyarázza őket a legjobban
+\item \emph{quartimax} forgatás a magyrázó faktorok számát minimalizálja
+
+\item \emph{equamax} forgatás az előbbi két eljárás keverékét végzi.
+\end{itemize}
+
+\section{Főkomponensanalízis}
+
+A főkomponensanalízis a faktoranalízis speciális eset, dimenziószám csökkentésre használható. Az eredetileg $p$ változóval jellemzett statisztikai sokaságot $k<<p$ főkomponenssel jellemzzük úgy, hogy a főkomponensek alapján elvégzett statisztikai elemzések következtetései a $p$-dimenziós sokaságra is érvényesek lesznek. A főkomponensek terében a változók korrelálatlanok lesznek. A főkomponensek korrelálatlanok, csökkenő súlyúak, amiknek az összege a totális variancia; vagyis csökkenő jelentőségűek.
+
+\emph{Watanabe-tétel:} ha $p$ dimenziót lecsökkentünk $k$ dimenzióra, akkor az összes lehetséges dimenziócsökkentési eljárással összevetve a főkomponens analízissel végrehajtott dimenziócsökkentés minimalizálja az információveszteséget.

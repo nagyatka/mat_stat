@@ -1,0 +1,30 @@
+%----------------------------------------------------------------------------
+\chapter{Nemparaméteres próbák}
+
+Ha a statisztikai minta eloszlását nem tekintjük eleve ismernek, akkor nemparaméteres próbákról beszélünk. Ilyenkor az előzetes felvetéseink nagyon általánosak, de természetesek, pl. szórás véges, eloszlás folytonos, stb. Mivel kevesebb feltételt követelünk meg kiinduláskor, a következtetések levonásához nagyonn elemszámú mintákra lesz szükségünk.
+
+\section{Függetlenségvizsgálat}
+
+Függetlenségvizsgálat esetén a nullhipotézisünk, hogy az elemzett változók függetlenek. A nullhipotéziról $\chi^2$-próbával dönthetünk, ahol $n$ elemszámú, kétdimenziós statisztikai mintánk van $(X_1,Y_1), ... , (X_n,Y_n)$. Mindkét minta értékeiből halmazokat készítünk úgy, hogy $I_k = [x_{k-1}, x_k)$ és $J_k = [y_{k-1}, y_k)$. Jelölje $V_{ij}$ azon mintaelemek számát, ahol $(X_i,Y_j) \in I_i \times J_j$, $p_{ij} = \mathbf{P}(X_k \in I_i, Y_k \in J_j)$. Becsléses illeszkedésvizsgálatot hajtunk végre, ahol a becsült paraméterek száma $r+s-2$, a próbastatisztikát a képletgyűjtemény alapján számoljuk. Ha a nullhipotézis igaz, akkor a próbastatisztika eloszlása $(r-1)(s-1)$ szabadságfokó $\chi^2$ eloszlást követ.
+
+\section{Homogenitásvizsgálat}
+
+Függetlenségvizsgálat esetén a nullhipotézisünk, hogy az elemzett változók eloszlása azonos. A nullhipotézisról dönthetünk $\chi^2$-próbával, kétmintás Kolmogorov-Szmirnov próbával, Wilcoxon-próbával, Kruskal-Wallis próbával, Mann-Whitney próbával vagy Friedman-próbával.
+
+\emph{$\chi^2$-próbával:} adott két statisztikai minta. Intervallum-felosztást készítünk a számegyenesen és megnézzük, hogy hány elem esett egy-egy intervallumba az egyik ($\nu_k$) és a másik ($\lambda_k$) minta esetén. A próbastatisztikát a képletgyűjtemény alapján számoljuk, ami $(r-1)$ szabadásgfokú $\chi^2$-eloszlást követ.
+
+\emph{Kolmogorov-Szmirnov-próbával:} adott két minta, azt szeretnénk eldönteni, hogy az eloszlásfüggvényük azonos-e. Ehhez mindkét mintának képezzük az empirikus eloszlásfüggvényét ($F_{n_1}$ és $F_{n_2}$), majd képletgyűjtemény alapján kiszámoljuk a próbastatisztika értékét. Ha a nullhipotézis igaz, akkor a próbastatisztika aszimptotikusan Kolmogorov-eloszlást követ (\emph{Kolmogorov-tétel}), vagyis ebből a táblázatból kapjuk a kritikus értéket. Ha kis elemszámú mintánk van, akkor a \emph{Gnyegyenko-Koroljuk-tétel} segítségével tudjuk ellenőrizni a homogenitást. Ez a tétel is empririkus eloszlásfüggvényekkel számol, ráadásul pontos eloszlást számok ki az $L(y)$ eloszlásfüggvénnyel.
+
+\pagebreak
+
+\emph{Mann-Whitney próba:} Két független mintáról szeretnénk eldönteni, hogy azonos eloszlást követnek-e. Ehhez összefésüljük a mintákat és az összefésült rendezett elemekhez rangszámokat rendelünk (hányadik legkisebb az adott elem?), majd képezzük a rangszámösszegeket ($R_x$ és $R_y$). Ha minták elemszámai elég nagyok, akkor a próbastatisztika eloszlása aszimptotikusan standard normális lesz, vagyis onnan vesszük a kritikus értéket. Kis minták esetén ott a Mann-Whitney táblázat.
+
+\emph{Kruskal-Wallis próba:} a Mann-Whitney próba általánosítása, $p$ független mintáról szeretnénk eldönteni, hogy ugyanabból az eloszlásból származnak-e. A $p$ független mintát egy $Y$ tördelő változó segítségével állítjuk elő. Innentől kezdve az algoritmus elég hasonló a Mann-Whitney-hez: összefésülés és rendezés, rangszámokat rendelünk a rendezett mintához és minden mintára kiszámoljuk a rangszámösszegét. Ha a nullhipotézis igaz, akkor a próbastatisztika aszimptotikusan $p-1$ szabaságfokú $\chi^2$-eloszlást követ.
+
+\emph{Wilcoxon-próba:} el akarjuk dönteni, hogy két összetartozó minta azonos eloszlásfüggvényhez tartozik-e. Ehhez ki kell számolni az összetartozó párok közötti differenciákat, majd rendezni kell őket és rangszámokat kell hozzájuk rendelni. Próbastatisztika a képletgyűjteményben, ami igaz nullhipotézis esetén standard normális eloszlást követ nagy mintaszám ($>25$) esetén. Kis mintákra ott a Wilcoxon-táblázat, ahol két kritikus érték van és a nullhipotézist akkor fogadjuk el, ha $R_+$ a két kritikus érték közé esik.
+
+\emph{Friedman-próba:} a Wilcoxon-próba általánosítása, $p$ változóról szeretnénk eldönteni, hogy azonos eloszláshoz tartoznak-e. Ekkor a $p$ változóhoz tartozó adatok egy adatmátrixban vannak, és az adatmátrix soraihoz kell rangszámokat rendelnünk. A rangszám megmondja, hogy az adott elem hányadik legkisebb a sorban. A rangszámösszegeket oszlopok szerint számoljuk, a próbastatisztika pedig, ha a nullhipotézis igaz, $\chi^2_{p-1}$-eloszlást követ. Kicsi elemszám esetén van Friedman-táblázat. Ha ez a próba megbukik, a változók között páronként még mindig ellenőrizhetünk homogenitást Wincoxon-próbával.
+
+
+
+

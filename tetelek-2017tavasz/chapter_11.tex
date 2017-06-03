@@ -1,0 +1,34 @@
+%----------------------------------------------------------------------------
+\chapter{Többdimenziós skálázás (MDS)}
+
+Adott egy olyan adatállomány, amelyet valamilyen megadott külső objektumokra vonatkozó hasonlósági vagy különbözőségi adatok (ált. skálázott szubjektív vélemények vagy észlelt különbségek) alkotnak. A cél olyan geometriai reprezentációk létrehozása a hasonlósági vagy különbözőségi adatokból, amelyek az adott külső tárgy (észlelt) viszonyát egy megfelelő dimenzió-számú geometrikai térben a lehető legpontosabban tükrözik vissza. Az eljárás eredménye mindig egy ponthalmaz egy adott dimenziószámú geometriai térben. A ponthalmaz képe alapján kísérletet tehetünk koordinátatengelyek megadására, amivel rejtett dimenziókat tárhatunk fel. Pl. milyen szempontokat tartanak fontosnak az emberek autóvásárlásnál? Miért szavaznak arra a politikusra, amelyikre?
+
+Sokszor már a szemléletes ábrázolás önmagában is sokat segít az adott jelenség megértésében, ha van benne valamilyen szabályszerűség. Azonban az ábrázolás önmagában még nem skálázás. Ha a térben sikerül olyan koordináta tengelyeket találni, amelyek mentén az objektumok elhelyezkedése jól értelmezhető, akkor ezeknek a \emph{tengelyeknek} az alkalmas \emph{beskálázásával} minden objektumhoz skálaértékeket rendelhetünk az adott dimenziók mentén.
+
+Azonban az érzékelt különbözőségeknek pontosan megfelelő geometriai konfiguráció nem mindig állítható elő, a feladatnak nem mindig létezik egzakt megoldása az adott térben. Azért a cél az, hogy legalább a lehetséges legjobb közelítő megoldást (optimális konfigurációt) találjuk meg.
+
+Az MDS alkalmazásához speciálisabb távolság vagy hasonlóság jellegű adatokra van szükség, amelyek általában csak erre a célra tervezett kísérletekban vagy felmérésekben nyerhetők. Amennyiben viszont sikerül alkalmas hasonlósági mértékeket definiálni és azokat megfelelő pontossággal mérni, akkor az MDS lényegesen jobb eredményt ad a faktoranalízisnél.
+
+\section{Metrikus klasszikus MDS}
+
+A \emph{klasszikus MDS (CMDS)} modellje csupán egyetlen különbözőségi mátrixot képes egyidejűleg kezelni és megkívánja a bemenő adatoktól a legalább intervallum-skálát. Alkalmazhatósága korlátozott, mert tipikusan több személy adatait szeretnénk egyidejűleg feldolgozni. Az $i$ és $j$ pontoknak megfelelő objektumok közötti különbözőség-érzékletet a létrehozott pontkonfigurációban a pontok euklideszi távolságával képezi le. A $\underline{\underline{D}}$ távolság-mártix elemei az egyes távolságértékek, amelyek a pontkonfigurációt jellemzik. Ennek a konfigurációnak az eltérése az eredeti észlelési adatokat tartalmazó $S$ különbözőség-mátrixtól mutatja, hogy egy megtalált megoldásnak mekkora a hibája. A illeszkedést a következő mutatók segítségével tudjuk mérni:
+\begin{itemize}
+\item \emph{S-stress:} $\sqrt{\frac{\text{hibamátrix (E) elemei négyzeteinek összege}}{\text{S-ből alkalmas lineáris transzformációval képzett mátrix (T) elemei négyzeteinek összege}}}$,\\szemléletesen a modell által meghatározott térben az összes észlelt különbözőséghez képest mekkora az eltérés az elméleti távolságok és a pontkonfigurációban létrejött távolságok között. Ha tökéletes a megfelelés, értéke 0
+\item \emph{Stress:} mint az s-stress, csak nem távolságnégyzetekkel, hanem magukkal a távolságokkal számol
+\item \emph{RSQ:} $D$ és $T$ megfelelő elemei között kiszámított korrelációs együttható négyzete.
+\end{itemize}
+A rekonstrukció akkor elfogadható, ha az s-stress és a stress értékei 0,20 alatt vannak (0,05 alatt kíváló). RSQ-nál a kisebb értékek rosszabb illeszkedést jeleznek.
+
+Metrikus CMDS esetén probléma, hogy nincs garancia arra, hogy az emberek hasonlósági ítéleteiket valóban egyenletesen skálázzák, ráadásul egyesek kifejezetten sarkítják a véleményüket. A gyakorlatban ráadásul inkább csak ordinális skálájú adataink vannak, nem intervallum-skálájúak. Megoldás: nemmetrikus MDS!
+
+\section{Nemmetrikus CMDS}
+
+\emph{Nemmetrikus MDS} esetén a távolságokat rangszámokkal helyettesítjük, amik az eredeti távolságok sorrendjét reprezentálják. Ábrázolásnál a rangszámok a pontok köré rajzolt kör/gömb/stb. sugarának felelnek meg. Ekkor azonban a konfiguráció instabil: az egyes pontok helye megváltoztatható anélkül, hogy a rangsor megváltozna. Azonban a pontok számának növelésével az egyes pontok mozgástere radikálisan szűkül. A három illeszkedési mutató ugyanúgy használható itt is, mint metrikus esetben, csak $T$-t nem lineáris, hanem monoton transzformációval kell létrehozni.
+
+\section{Továbbfejlesztett MDS modellek}
+
+Több kísérleti személy eredményeinek együttes kiértékelése az előző módszerekkel problémás, mert csak egyetlen különbözőség-mátrixot tudnak egyidőben használni. A CMDS egyszerű személyenkénti ismételgetése azonban általában nem elfogadható, mert közvetve feltételei, hogy az egyes személyek különbözőség-érzékletei  egymástól függetlenek, nincs bennük semmi közös. Az igazán jól használható megoldásokhoz más típusú matematikai modellekre volt szükség, pl.
+\begin{itemize}
+\item Replicated MDS: ez már több különbözőségi mátrixot is képes egyidejűleg kezelni és feltételezi, hogy az egyes objektumok különbözőségei bizonyos véletlenszerű hibáktól eltekintve azonos mértékben tükröződnek $\rightarrow$ az adatmátrixok egymás replikái
+\item Weighted MDS: több különbözőségi mátrixot is képes egyidejűleg kezelni és a válaszok mögött meghúzódó egyéni észlelési és kognitív folyamatok különbségeiről is bizonyos információkat tud adni
+\end{itemize} 

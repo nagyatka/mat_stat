@@ -1,0 +1,44 @@
+%----------------------------------------------------------------------------
+\chapter{Adatredukciós módszerek}
+
+\section{Klaszteranalízis}
+
+A klaszteranalízis egy adatredukciós módszer, aminek segítségével az eseteket homogén csoportokba sorolhatjuk. A klaszterezés célkitűzése, hogy az "összetartozó" eseteket közös csoportba soroljuk. A hasonlóságot egy $d(\underline{x},\underline{y} )$ távolságfüggvény írja le, melyre igaz, hogy $d(\underline{x},\underline{y}) > 0$, $d(\underline{x},\underline{y})= d(\underline{y},\underline{x} )$ és teljesíti a háromszög-egyenlőtlenséget:
+\begin{itemize}
+\item Két klaszter távolságát definiálhatjuk a két legközelebbi társ távolságaként, az egymástól legtávolabbi társak távolságaként, vagy a klaszter-középpontok távolságaként
+\item Az esetek távolságait is többféleképpen definiálhatjuk: Manhattan-blokkok, Euklideszi távolság, Csebisev ($max_{i=1,...,p} | x_i - y_i|$), stb.
+\end{itemize}
+
+A naiv hozzáállás a problémához, ha az összes lehetséges csoportosításból kiválasztjuk a legjobbat. Azonban $N$ elemet $K$ csoportba $\frac{1}{K!}\Sigma_{k=1}^K (-1)^{K-k} {{K}\choose{k}} k^N$-féleképpen lehet sorolni. Ez túl nagy szám. Ehelyett olyan algoritmusok kellenek, amelyek eleve jó csoportosítások képeznek, és ezek közül egy optimum elv segítségével kiválasztható egy nagyon jó.
+
+A \emph{k-közép} módszer olyan klaszterező eljárás, amikor előre meg kell adni a klaszterek számát. Lépéseit \emph{McQueen-tételként} ismerjük: válasszuk ki a klaszterek számát ($k$). Véletlenszerűen hozzunk létre $k$ számú klasztert és határozzuk meg minden klaszter közepét (vagy válasszunk $k$ véletlen klaszter-középpontot).
+Az esetvektorok a legközelebbi klaszter-középponthoz lesznek rendelve. Számoljuk ki az új klaszter-középpontokat! Az előzőeket isméterljük, amíg valamilyen konvergencia kritérium nem teljesül. Előnye, hogy nagy esetszámú adatmátrix is feldolgozható vele, egyszerű, gyors és végessor lépésben leáll. Hátránya, hogy a metrika beépített (Euklideszi), körülményes a koordinátázás, előre meg kell adni a klaszterek számát és az eredmény függ a sorrendtől.  A k-közép algoritmus általánosítása a \emph{k-medoids}, ami tetszőleges metrikával működik.
+
+A \emph{hierarchikus klaszterezés} egyelemű klaszterekből indul ki és minden lépésben a két legközelebb fekvő klasztert összevonva csökkenti a klaszterek számát, amíg egyetlen klaszterbe nem kerül minden eset. A folyamatot dendogrammon követhetjük végig és azt a köztes állapotot fogadjuk el, amikor az összevont klaszterek elég távol voltak egymástól. Előnye, hogy nem kell előre tudni a klaszterek számát, ráadásul változtatható a távolság- és hasonlósági-mérték. Hátránya, hogy csak kis dimenziószám esetén indítható el.
+
+\section{Diszkriminanciaanalízis}
+
+Diszkriminanciaanalízis segítségével az esetek egy kategóriaváltozó értékei alapján osztályokba vannak tagolva. A feladat az, hogy a többdimenziós térben az osztályokat szeparáló felületekkel elválasszuk. A szeparációs felületek az eseteket vagy objektumok jellemző változók alkalmas lineáris kombinációi. A módszerrel újabb objektumok csoportokhoz tartozásának lehető legjobb előrejelzését is megadhatjuk.
+
+\emph{Csoportképző változó:} természetes számokkal kódolt kisszámú értéket vehet fel, amelyek egymást kölcsönösen kizáró kategóriáknak felelnek meg.
+
+\emph{Prediktor változó:} többdimenziós, normális eloszlású kvantitatív adatokat kell tartalmaznia minden csoportban közel azonos kovariancia mátrixokkal.
+
+\emph{Diszkriminancia-függvény:} a csoportképző változók alkalmas módon megválasztott lineáris kombinációja, amelynek alapján a csoporthoz tartozás megadható. A lineáris kombináció konstansait úgy választjuk meg, hogy a $\frac{\Sigma_i (\bar{x}_i - \bar{x})^2}{\Sigma_j \Sigma_i (x_{ij} - \bar{x}_i)^2}$ hányados értéke maximális legyen.
+
+\section{Osztályozás}
+
+Osztályozásról beszélünk, ha ismert kategóriájú esetek segítségével (tananyag) döntésfüggvényt konstruálunk, amivel ismeretlen kategóriájú esetekben is tudunk osztályokat rendelni. A $\mathcal{D}_n = \{ (X_1,Y_1), ..., (X_n,Y_n)\}$ halmazt \emph{tananyagnak} nevezzük. $X_i$ az $i$-dik tanulópont, a belőlük képzett halmaz pedig a tanulópont-halmaz. $Y_i$ a megfelelő tanítás. Az osztályozás folyamata 3 lépésből áll:
+\begin{enumerate}
+\item A tananyag előfeldolgozása: csak egyszer kell elvégezni, míg az osztályozást nagyon sokszor. Az előfeldolgozás költsége megtérül, ha kisebb költséggel osztályzunk.
+\begin{itemize}
+\item Ritkítás: részhalmaz előállítása, ami pontosan osztályozza a tananyagot és minimális elemszámú
+\item Tömörítés: olyan tananyag készítése, ami kevesebb elemből áll, mint az eredeti és pontosan osztályozza azt
+\item Átdefiniálás: megadunk egy transzformációt, ami átdefiniálja az osztályokat, ezzel új tananyagot készíthetünk
+\item Szűrés: olyan részhalmazt akarunk előállítani, amelynél a tananyag pontjait a legközelebbi szomszék módszerrel pontosabban lehet osztályozni
+\end{itemize}
+\item A döntésfüggvény előállítása a $\mathcal{D}_n$ tananyag függvényeként
+\item Ismeretlen alakzatvektorok osztályozása
+\end{enumerate}
+
+A \emph{legközelebbi társ módszerével} minden osztályozandó pontot abba az osztályba fogunk sorolni, amelyik osztálynak a már létező tagjai közül valamelyikre az osztályozandó pont a legjobban hasonlít. A hasonlóságot itt is egy távolságfüggvény írja le. Alapesetben ez $n$ db távolság kiszámítását jelenti, vagyis jó lenne gyorsítani az algoritmust. A gyorsításhoz szükség van a tananyag előfeldolgozásából nyert adatokra, statisztikákra. A gyorsítás ún. \emph{kizárási feltételek} alapján történik, amik megadják, hogy mikor biztosan nem legközelebbi szomszédja egy tanulópont egy adott esetnek, pl. adott esettől vett távolsága nagyobb, mint a legkisebb távolság kétszerese; van olyan tanulópont, amitől több, mint kétszer távolabb van, mint a potenciális szomszéd.

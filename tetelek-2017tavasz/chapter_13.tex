@@ -1,0 +1,64 @@
+%----------------------------------------------------------------------------
+\chapter{Mintavételezés} \label{ch:mintavetel}
+
+A statisztika célja a halmaz egészének kevés adattal történő tömör 
+jellemzése, és a populáció egyedeinek leírására bevezetett változók közötti kapcsolatok leírása. Arra nincs lehetőség (erőforrás), hogy  a populációminden egyes eleméről adatokat szerezzünk be, azaz mintát kell vételeznünk a sokaságból.
+
+\emph{Minta:} A sokaság elemeinek egy csoportja. A mintajellemzőkból (statisztikákból) tudunk valamilyen következtetést levonni a teljes sokaságra.
+
+\emph{Reprezentativitás:} nem reprezentatív mintából levont következtetések értékelhetetlenek, torzak. Az alkalmazott statisztikai módszerek, becslési hibák akkor lesznek érvényesek, ha a minta, amivel számolunk reprezentatív! A populáció minden egyes elemének ugyanakkora esélyt kell biztosítani a mintába kerüléshez. A minta elemszámának elég nagynak kell lennie ahhoz, hogy a következtetéseink átvihetők lehessenek a populációra is. A szükségesnél ne kelljen nagyobb mintát feldolgozni, mert az költségesebb.
+
+\emph{Mintavételi keret:} a mintavételi egységekről (vizsgálati egység, amelyik rendelkezik a keresett információval, vagy az az alapegység, amelyik magában foglalja a sokaság elemeit) készült felsorolás, amely segítségével azonosíthatóak az elemek. Amennyiben a populáció bizonytalanul körülhatárolható csak, a mintavételi keretet keressük meg, amely alkalmas arra, hogy a populáció minden egyes elemét azonosítsuk és bevonjuk bármely mintánkba.
+
+\section{Mintavételezési technikák}
+
+\emph{Cenzus:} A sokaság elemeinek teljes számbavétele. Cenzust alkamazunk, ha kicsi a sokaság, figyelni kell az egyedi esetekre, sok idő és pénz áll rendelkezésre vagy nagon szóródik a megfigyelt jellemző a sokaságban.
+
+\emph{Visszatevéses mintavétel:} egy adott elem elvileg többször is a mintába kerülhet.
+
+\emph{Visszatevés nélküli mintavétel:} egy elem csak egyszer kerülhet a mintába.
+
+\emph{Bayes-technika:} minden egyes kiválasztást követően kiszámítják a mintajellemzésőket és meghatározzák a költségeket, és ezek alapján válsztják a következő egyedet.
+
+\emph{Nem véletlen mintavételi technikák:} a ilyen technikák esetében nem minden esetben teljesül a reprezentativitás. Azonban feltáró kutatáshoz jól használható, illetve alkalmazzuk, ha nagyok a nem mintavételi hibák, a sokság homogén, vagy nem statisztikai módszerekkel kívánjuk elemezni a mintát.
+\begin{itemize}
+\item Önkényes mintavétel: a minta elemeit általában kérdezőbiztos választja ki, nincs mintavételi keret, amiből választani lehetne. Olcsó, a mintavételi egységek könnyen elérhetők, de semmilyen meghatározható sokaságot nem reprezentálnak és semmilyen általánosításra nem ad módot. Mire jó: leíró kutatások, hipotézisek felállítása
+\item Elbírálásos mintavétel: a kutató saját tapasztalatai alapján választ a sokaság elemei közül és eldönti, hogy bekerüljenek-e a mintába, vagy sem. Pl. teszthelyszínek kiválasztása, szakértők kiválasztása, stb.
+\item Kvótás mintavétel: A kutató felállítja a sokaság kontroll kategóriáit, azaz a kvótákat, a mintaelemeket a kvótának megfelelően önkényesen vagy elbírálással választja ki. Ha kimarad a sokaság egy fontos jellemzője, akkor a minta nem reprezentatív
+\item Hólabda mintavétel: egyvalakit, vagy egy kis csoportot megkeresünk és a kezdeti csoport tagjait arra kérjük, hogy ajánljanak mésokat, akik szintén a célsokasághoz tartoznak. Akkor használjuk, ha speciális jellemzővel bíró sokaságot keresünk.
+\end{itemize}
+
+\emph{Véletlen mintavételi technikák:} az elérendő cél az, hogy 
+a minta jellemzői teljes egészében megegyezzenek a célsokaság jellemzőivel, azaz ne legyen torzítás. Ha mégis lenne eltérés, akkor a különbség legyen statisztikailag mérhető. Az így vett minták jellemzői kivetíthetők az egész sokaságra. Használjuk leíró kutatásokhoz, ha nagyon a mintavételi hibák vagy a sokaság szórása nagy és statisztikai módszerekkel kívánjuk elemezni a mintát.
+\begin{itemize}
+\item Egyszerű véletlen mintavétel: a sokaság minden eleme ismert és azonos valószínűséggel kerülhet be a mintába. Minden elemet egymástól függetlenül, a mintavételi keretből véletlen eljárással választunk ki
+\item Szisztematikus mintavétel: a mintavételi keretben véletlenszerűen kijelölnek egy kezdőpontot, majd kiválasztják a mintavételi keret $i$-dik elemét, $i = [N/n]$, ahol $N$ a mintavételi keret elemszáma, $n$ pedig a minta elvárt nagysága. Akkor működik jól, ha nincsenek sorbaállítva az egyedek a vizsgált jellemzővel összefüggésben
+\item Rétegzett mintavétel: sokaságot csoportokra bontják valamilyen ismert rétegképző ismérv segítségével, az egyes rétegekből pedig egyszerű véletlen mintavétellel választanak. Attól függően, hogy a rétegekből kiválasztott elemek száma arányos-e a rétegnek a teljes sokasághoz viszonyított nagyságával, beszélhetünk arányos és nem arányos rétegezésről
+\item Csoportos mintavétel: A célsokaságot egymást kölcsönösen kizáró csoportokra bontják, amelyek együttesen lefedik az egész sokaságot (statisztikai populációt). Az így képzett csoportokból egyszerű véletlen mintát vesznek (csoportokat választanak ki). A kiválasztott csoportból vagy mindenki kiválasztanak, vagy csoporton belül egyszerű véletlen mintavételeznek.
+\item Többlépcsős mintavételezés: nagyobb egységeket részekre bontjuk és a részek között véletlenszerűen választunk egyet. A kiválasztott rész újabb részekre bontjuk és véletlenszerűen megint választunk...
+\item Szekvenciális mintavétel: a sokaság elemeiből egymást követően veszünk mintát, majd valamilyen mintavételt követően elvégezzük az elemzést és eldöntjük, hogy kell-e újabb elemet választani
+\item Kettős mintavétel: a sokaság elemeiből kétszer veszünk mintát
+\end{itemize}
+
+\section{A szükséges minta elemszám meghatározása}
+
+Minél pontosabb információra van szükség, annál nagyobb mintát kell venni. Ám minél jobban nő a minta, annál kisebb a javulás a mintanagyság egységnyi növekedésével. Léteznek ökölszabályok és tudományos módszerek is az elemszám meghatározására
+
+Ökölszabály: kis csoport (elemszám max. 30-35) esetén a teljesen populációt be kell venni a mintába, vagyis cenzust kell alkalmazni. Nagyobb elemszám esetén a minta elemszáma és a teljes populáció között közel logaritmikus kapcsolat áll fenn.
+
+Tudományos módszerek: A minimális mintaelemszám meghatározásakor a $\mathbf{P}\big( | \bar{x}_n - m | \leq \epsilon \big)\geq 1-\mu$ relációra keressük a megfelelő $n$-eket. A reláció jelentése: mekkora $n$ elemszám garantálja, hogy a mintaátlag a minta várható értékétől legfeljebb $\epsilon$ távolságra esik $1-\mu$ valószínűséggel? Ha a 3 paraméter ($n$, $\epsilon$, $\mu$) bármelyik kettőt ismerjük, akkor alsó-becslést tudunk adni a harmadikra.
+\begin{itemize}
+\item Egymintás t-próbához (centrális határeloszlás-tétel alapján): ahhoz, hogy $(1-\alpha)$ valószínűséggel kimutassunk egy legalább $2d$ nagyságű különbséget, a mintának $\frac{u_{\alpha/2}^2 \cdot \sigma^2}{d^2}$ elemet kell tartalmaznia. $u_{\alpha/2}^2$ a standard normális eloszlás $\alpha/2$ valószínűséghez tartozó értéke, $\sigma$ az elméleti szórás vagy annak becslése, $d$ pedig a konfidencia intervallum szélességének fele
+\item Kétmintás t-próbához Beyer készített táblázatot figyelembe véve a másodfajú hibát és hogy milyen valószínűséggel szeretnénk a különséget kimutatni
+\item Paraméteres módszerek:
+	\begin{itemize}
+	\item ismert $\sigma$ szórás esetén: $n \geq \frac{z_{\mu/2}^2 \cdot \sigma^2}{\epsilon^2}$, ahol $\Phi(z_{\mu/2}) = 1- \mu/2$
+	\item ismeretlen szórás esetén:  $n \geq \frac{t_{\mu/2}^2 \cdot s_n^2}{\epsilon^2}$, ahol $F_{n-1}(t_{\mu/2}) = 1- \mu/2$ és $s_n^2$ a minta szórásnégyzete
+	\end{itemize}
+\item Ha a mérések garantáltan az $(a,b)$ intervallumba esnek
+	\begin{itemize}
+	\item ismeretlen szórás esetén Hoeffding-egyenlőtlenség: $n \geq -\frac{ln(\mu/2) \cdot \frac{(b-a)^2}{2}}{\epsilon^2}$
+	\item ismert $\sigma$ szórás esetán Bernstein-egyenlőtlenség: $n \geq -\frac{ln(\mu/2) \cdot (2 \sigma^2 + 2\epsilon \frac{b-a}{3})}{\epsilon^2}$
+	\end{itemize}
+\item Csernov-egyenlőtlenség
+\end{itemize}

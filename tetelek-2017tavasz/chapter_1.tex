@@ -1,0 +1,63 @@
+%----------------------------------------------------------------------------
+\chapter{Paraméterbecslések}
+
+%----------------------------------------------------------------------------
+\section{Alapfogalmak}
+%----------------------------------------------------------------------------
+
+A matematikai statisztika alapmodellje:
+\begin{itemize}
+\item $\mathcal{K}$ a véletlen kísérlet
+\item $\Omega$ a lehetséges kimenetelek halmaza
+\item $\mathcal{A}$ a megfigyelhető események halmaza
+\item $\mathcal{P}$ a lehetéges valószínűségi mértékek halmaza
+\end{itemize}
+Az elemzésünk célja, hogy $\mathit{P}$-ből kiválasszuk a tényleges valószínűséget, de legalábbis egy jó helyettesítő egyedet.
+
+\emph{Statisztikai minta:} Az $X$ valószínűségi változóval azonos eloszlású, egymással teljesen független $X_1$, $X_2$, ..., $X_n$ valószínűségi változók együttesét statisztikai mintának nevezzük. Egy mintavételkor tulajdonképpen megfigyeljük a $\mathcal{K}$ véletlen kísérletet, azaz megállpítjuk, hogy melyik $\omega \in \Omega$ lehetséges kimenet realizálódott. Az $X_1(\omega)=x_1..., X_n(\omega)=x_n$ szám $n$-est nevezzük a minta realizációjának.
+
+\emph{Statisztika:} Legyen $t_n$ egy $n$-változós valós függvény. A statisztikai minta $t_n(X_1, X_2, ..., X_n)$ függvényét nevezzük statisztikának. A statisztika egy valószínűségi változó, aminek eloszlásfüggvényét a minta eloszlásfüggványáből lehet kiszámolni. A $T_n = t_n(x_1, x_2, ..., x_n)$ szám a statisztika számolt értéke.
+
+\emph{Paraméter:} Tegyük fel, hogy a minta eloszlásfüggvényének képletét egy $\vartheta$ paraméter konkretizálja, pl. normális eloszlás várható értéke, szórása; binomiális eloszlás paraméterei ($n$ és $k$). Ha ismerjük a paraméter értékét, pontosan meg tudjuk adni az eloszlásfüggvényt $\rightarrow$ cél: adott statisztikai minta segítségével a $\vartheta$ paraméter becslése egy alkalmas statisztikával.
+
+%----------------------------------------------------------------------------
+\section{A matematikai statisztika alaptétele (Glivenkó-Cantelli)}
+%----------------------------------------------------------------------------
+
+\emph{Empirikus eloszlásfüggvény:}\\
+$F_{emp}(x) = 
+  \begin{cases}
+    0       & \quad \text{ha } x \leq X_1^* \\
+    \frac{k}{n}  & \quad \text{ha } X_k^* < x \leq X_{k+1}^*\\
+    1		& \quad \text{ha } x>X_n^* \end{cases}
+$, ahol $X_i^*$ a rendezett minta $i$-dik eleme
+
+\emph{Glivenkó-Cantelli tétel:} $P(\lim_{n\rightarrow \infty}\sup_{x\in\mathsf{R}}|F_{emp}(x)-F(x)|=0)=1$, vagyis az empirikus eloszlásfüggvény 1 valószínűséggel, egyenletesen konvergál az eloszlásfüggvényhez. (E miatt a tétel miatt van egyáltalán értelme beszélni a matematikai statisztikáról.)
+
+%----------------------------------------------------------------------------
+\section{A jó becslések tulajdonságai}
+%----------------------------------------------------------------------------
+
+\emph{Torzítatlanság:} $\mathbf{E}T_n=\vartheta$, vagyis a becslő statisztika pont a becsülendő paraméterérték körül fogja felvenni az értékeit. Indok: egy valószínűségi változó az összes szám körül épp a várható érték körül ingadozik a legkisebb mértékben
+	\begin{itemize}
+	\item Aszimptotikus torzítatlanság: a torzítatlansági feltétel csak $n \to \infty$ esetében igaz
+	\end{itemize}
+
+\emph{Konzisztencia:} $\forall \epsilon >0 \text{-ra } \lim_{n \to \infty}\mathbf{P}(|T_n-\vartheta|>\epsilon) = 0$, vagyis garancia van arra, hogy a minta elemszám növekedtével növekszik a becslés pontosságának valószínűsége
+	\begin{itemize}
+	\item Erős konzisztencia: torzítatlan becslés, ahol az elemszám növekedtével a szórásnégyzet (variancia, $\mathbf{D}^2T_n$) 0-hoz tart. Az erősen konzisztenc statisztikai becslések egyben konzisztensek is
+	\end{itemize}
+
+\emph{Hatásosság:} torzítatlan becslés, melynek varianciája minden más torzítatlan becslés varianciájánál kisebb. Logika: két torzítatlan becslés közül a kisebb szórásnégyzetű a jobb, hiszen kisebb mértékben ingadozik a paraméter körül, vagyis kevesebb megfigyeléssel is jó becslés kapható. Hatásos becslésből egyetlen egy létezik csak, ezt érdemes megkeresni egy adott paraméter-becslési problémához
+\begin{itemize}
+\item A Cramer-Rao egyenlőtlenség elvi alsó korlátot ad a torzítatlan becslések szórásnégyzeteire. Ha egy statisztikára belátjuk, hogy a szórásnégyzete éppen az alsó korláttal egyenlő, akkor az biztosan a hatásos becslés
+\end{itemize}
+
+\emph{Elégségesség:} a mintának $t_n$-re vonatkozó együttes feltétel sűrűségfüggvénye nem tartalmazza a $\vartheta$ paramétert, vagyis a becslés egymaga képes helyettesíteni a mintát, a paraméterre vonatkozóan minden információt magába sűrít
+	\begin{itemize}
+	\item Rao-Blackwell-Kolmogorov tétel: ha létezik hatásos (legjobb torzítatlan) becslés, akkor elég azt az elégséges becslés függvényei között keresni:\\
+	$\exists h(): \mathbf{E}_\vartheta(h(T_n)) = g(\vartheta), \mathbf{\sigma}^2_\vartheta(h(T_n)) \leq \mathbf{\sigma}^2_\vartheta(t_n)$, és $h(T_n) = \mathbf{E}_\vartheta(t_n | T_n)$, ahol $T_n$ a statisztika számított értéke, $g$ a függvény tetszőleges torzítatlan becslése
+	\item Az elégségességet a Neymann-Fisher faktorizációs tétellel lehet ellenőrizni:\\
+	A $T_n$ statisztika a $\vartheta$ paraméternek akkor és csak akkor elégséges becslése, ha $\exists k : \mathbb{R}^n \rightarrow \mathbb{R}$ és $g:\mathbb{R}^2 \rightarrow \mathbb{R}$ függvények, hogy $\forall (x_1,...,x_n) \in \mathbb{R}^n$ és $\forall \vartheta$-ra\\ $L_\vartheta(x_1,...,x_n)=k(x_1,...x_n) \cdot g(T_n(x1,...,x_n),\vartheta)$, ahol $L_\vartheta(x_1,...,x_n)$ a minta együttes sűrűségfüggvénye
+	\end{itemize}
+

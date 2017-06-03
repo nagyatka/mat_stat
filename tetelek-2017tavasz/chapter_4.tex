@@ -1,0 +1,48 @@
+%----------------------------------------------------------------------------
+\chapter{Próbák}
+
+\section{Paraméteres próbák}
+
+Paraméteres próbák esetén $\mathcal{P} = \{ \mathbf{P}_\vartheta : _\vartheta \in \Theta\}$, $\Theta = \Theta_0 \cup \Theta_1$, $\Theta_0 \cap \Theta_1 = \emptyset$, ahol $\Theta$ a paramétertér. A nullhiptézis, hogy $\vartheta \in \Theta_0$, az alternatív hipotézis pedig, hogy $\vartheta \in \Theta_1$. Feltételezzük, hogy a minta normális eloszlást követ, a nullhipotézist pedig a normális eloszlás paramétereivel kapcsolatban fogalmazzuk meg.\footnote{A vizsgán használhattuk a képletgyűjteményt, így a képleteket nem gépeltem le.} Akkor döntünk a nullhipotézis mellett, ha a számolt próbastatisztika kisebb a kritikus értéknél.
+
+\begin{table}[h]
+\centering
+\caption{Paraméteres próbák}
+\label{tab:param}
+\begin{tabular}{|p{2,5cm}|p{5cm}|p{3cm}|p{3cm}|}
+\hline
+\textbf{Próba neve}            & \textbf{Feltétel}                                                             & Paraméter & Döntés                   \\ \hline
+egymintás u-próba              & szórás ismert & várhetó érték & $|u_{proba}| < K_{krit}$ \\ \hline
+kétmintás u-próba              & független statisztikai minták, szórásaik ismertek & várható érték & $|u_{proba}| < K_{krit}$ \\ \hline
+egymintás t-próba              & szórás nem ismert & várható érték &  $|t_{proba}| < K_{krit}$ \\ \hline
+független kétmintás t-próba    & minták függetlenek, szórásai egyenlőeknek tekintendők ($\rightarrow$ F-próba) & várható érték &  $|t_{proba}| < K_{krit}$ \\ \hline
+összetartozó kétmintás t-próba & & várható érték &  $|t_{proba}| < K_{krit}$ \\ \hline
+Welch-próba                    & független, normális eloszlású minták, eltérő szórással (amik nem ismertek) & várható érték &  $|W_{proba}| < K_{krit}$ \\ \hline
+F-próba                        & független, normális eloszlású minták, szórás nem ismert & szórás &  tört $\in F_{n-1,m-1}$   \\ \hline
+Bartlett-próba                        &  & szórás & $W \in \chi^2_{p-1}$   \\ \hline
+\end{tabular}
+\end{table}
+
+\emph{Egymintás u-próba:} a normális eloszlású mintának ismerjük a szórását és arra vagyunk kiváncsiak, hogy a várható értéke $m_0$-e. A nullhipotézis ellenőrzéséhez első lépésben kiszámoljuk a próbastatisztika abszolútértékét. Második lépésben a kritikus értéket kell meghatároznunk: $\mathbf{P}(|N(0,1)| < u_{krit})= \mathbf{P}(-u_{krit} < N(0,1) < u_{krit}) = \Phi(u_{krit}) - \Phi(-u_{krit}) = 2 \Phi(u_{krit}) -1 = 1-\epsilon$, vagyis $\Phi(u_{krit}) = 1-\epsilon/2$. A kritikus értéket ez alapján a megfelelő táblázatból olvashatjuk ki. Amennyiben a próbastatisztika abszolútértéke kisebb a kritikus értéknél, a nullhipotézist elfogadjuk. Az egymintás u-rpóba torzítatlan és konzisztens, ráadásul egyenletesen legjobb próba is.
+
+\emph{Kétmintás u-próba:} adott két, egymástól független statisztikai minta, amelyek normális eloszlást követnek és a szórásaik ismertek. Nullhipotézisünk, hogy a két minta várható értéke megegyezik. Kétmintás esetben a döntéshez majdnem ugyanazokat a lépéseket kell elvégeznünk, mint egymintás esetben, csak a próbastatisztikát számoljuk másként (lásd képletgyűjtemény).
+
+\emph{Egymintás t-próba:} normális eloszlású mintának nem ismerjük a szórását, de feltételezzük, hogy várható értéke $m_0$. Hogy a feltételezéstől döntsünk, ki kell számolnunk a próbastatisztika értékét, ami $t_{n-1}$ eloszlást követ. A kritikus értéket a $\mathbf{P}(|t_{n-1}| < t_{krit}) = 1-\epsilon$ összefüggésből kapjuk.
+
+\emph{Független mintás t-próba} esetén először meg kell győződnünk arról, hogy a minták szórása egyenlőnek tekinthető-e. Ezt $F$-próbával tehetjük meg. Ha az F-próba sikeres, akkor elvégezhetjük a független mintás t-próbát. Nullhipotézisünk, hogy a minták várható értékei egyenlőek. Először kiszámoljuk a próbastatisztika abszolútértékét, ami $t_{n+m-2}$ eloszlást követ, majd ezt hasonlítjuk össze a kritikus értékkel a megfelelő táblázatból. 
+
+\emph{Összetartozó mintás t-próba:} nullhipotézisünk, hogy a minták várható értékei egyenlőek. Ellenőrzéshez kiszámoljuk a próbastatisztika abszolútértékét, ami $t_{2n-2}$ eloszlást követ és ezt hasonlítjuk össze a próbastatisztika értékével.
+
+\emph{Welch-próba:} független mintás t-próbát akartunk, de az $F$-próba sikertelen volt, vagyis a szórások nem tekinthetőek egyenlőnek. Ilyenkor Welch-próbával dönthetünk arról, hogy a várható értékek megegyeznek-e. A próbastatisztika közelítőleg $t_f$ eloszlást követ, ahol $f$-et külön számolni kell a képletgyűjteményben megadottak szerint. Ha megvan $f$, táblázatból kinézhetjük a kritikus értéket és meghozhatjuk a döntést.
+
+\emph{$F$-próba:} két független mintáról eldönthetjük vele, hogy a minták szórásai egyenlőnek tekinthetőek-e. A próbastatisztika $F_{n-1,m-1}$ eloszlást követ, a képletben $s^*_{x,m}$ az $X$ minta empirikus szórásnégyzete:  $s^*_{x,m} = \frac{1}{n-1} \Sigma_{i=1}^n(X_i - \bar{X_n})^2$.
+
+A \emph{Bartlett-próba} az $F$-próba általánosítása, nem két, hanem $p$ független mintáról dönti el, hogy szórásaik egyenlőnek tekinthetőek-e. A próbastatisztika $p-1$ szabadságfokó $\chi^2$ eloszlást követ, vagyis abból a táblázatból kell nézni a kritikus értéket.
+
+\section{Nemparaméteres próbák}
+
+Ha a statisztikai minta eloszlását nem tekintjük eleve ismernek, akkor nemparaméteres próbákról beszélünk. Ilyenkor az előzetes felvetéseink nagyon általánosak, de természetesek, pl. szórás véges, eloszlás folytonos, stb. Mivel kevesebb feltételt követelünk meg kiinduláskor, a következtetések levonásához nagyonn elemszámú mintákra lesz szükségünk.
+
+\subsection{Tiszta illeszkedésviszgálat}
+
+Nullhipotézisünk, hogy az elemzett változó eloszlása megegyezik a hipotetikussal. A nullhipotézisről dönthetünk \emph{$\chi^2$-próbával}. Adjuk meg a minta értékkészletének egy tetszőleges $r$ diszjunkt intervallumból álló felosztását. Tudjuk, hogy mekkora egy-egy esemény bekövetkezésének valószínűsége a hipotetikus eloszlás esetén ($\nu_i$) és mekkora lett a mintánk esetén ($p_i$). Ha a nullhipotézis igaz, akkor $\Sigma^r_{i=2} \frac{(\nu_i - np_i)^2}{npi}$ aszimptotikusan $r-1$ szabadságfokú $\chi^2$ eloszlást követ, $n$ a minta elemszáma. A kritikus értéket a megfelelő táblázatból kapjuk.

@@ -1,0 +1,64 @@
+\chapter{Hipotéziselmélet}
+
+Adott a $\mathcal{K}$ véletlen kísérlet, az $\Omega$ eseménytér,  a lehetséges valószínűségek halmaza $\mathcal{P}$ és a felette értelmezett $\mathbf{P}$ Kolmogorov-féle valószínűségi mező. Tegyük fel, hogy $\mathcal{P}$ két diszjunkt halmazra bontható: $\mathcal{P}_0$ és $\mathcal{P}_1$. Statisztikai próbát akarunk kidolgozni annak eldöntésére, hogy $H_0:\mathbf{P}\in\mathcal{P}_0$ \emph{nullhipotézis} igaz-e. Ha úgy kell döntenünk, hogy anull hipotézis nem igaz, akkor automatikusan a $H_1:\mathbf{P}\in\mathcal{P}_1$ \emph{alternatív hipotézist} fogjuk elfogadni. A döntéshez szignifikancia szintet rendelünk, amivel jellemezzük, hogy mennyire erős a döntésünk.
+
+Azonban a döntésünk nem lesz minden esetben helyes, elképzelhető, hogy hibásan döntünk. \emph{Elsőfajú} hibáról beszélünk, ha $H_1$-et fogadjuk el, minközben $H_0$ igaz. Ennek értékét tudjuk befolyásolni, általában 5-10\%-ra választjuk. A hibánk \emph{másodfajú}, ha $H_0$-t fogadjuk el, miközben $H_1$ az igaz. A másodfajú hiba értékét nehéz megállítani. A kéz hibafajta között trade-offot kell találni, ha az egyiket csökkentjük, a másik nőni fog. A hibavalószínáségeket csak úgy tudjuk csökkenteni, ha növeljük a mintaelemszámot (mivel így csökken a szórás)!
+
+\section{Paraméteres próbák}
+
+Paraméteres próbák esetén feltételezzük, hogy $\mathcal{P} = \{\mathbf{P}_\vartheta:\vartheta \in \Theta\}$, ahol $\Theta$ a paramétertér, melyet két diszjunkt halmazra osztunk($\Theta_0$ és $\Theta_1$). A nullhiptézisünk ez esetben, hogy $\vartheta \in \Theta_0$, az alternatív hipotézis pedig, hogy $\vartheta \in \Theta_1$.
+
+A pontos döntéshez  a minta eloszlásfüggvényét $F_\vartheta(x)$ közelítjük a $T_n(X_1,X_2,...,X_n)$ próbastatisztikával. A szignifikacia szintet $\varepsilon$-nak jelöljük és feltesszük, hogy $\forall \varepsilon \in (0,1): \exists K_1(\varepsilon) < \exists K_2(\varepsilon): \mathbf{P}_\vartheta(K_1(\varepsilon) < T_n <K_2(\varepsilon)) \geq 1-\varepsilon$. Ekkor az elfogadási tartomány: $\mathcal{X}_e={\underline{x}\in\mathcal{R}^n: K_1(\varepsilon) < T_n(\underline{x}) <K_2(\varepsilon)}$, ahol $\underline{x}$ a mintarealizáció. Ha $\underline{x} \in \mathcal{X}_e$, akkor a nullhipotézist elfogadjuk az $\varepsilon$ szignifikancia szinten.
+
+A tanult paraméteres próbákban közös, hogy \textbf{az elemzett minta normális eloszlást követ}. A nullhiptézist a normális eloszlás paramétereivel (várható érték, szórás) fogalmazzuk meg. A próbák adatait a \ref{tab:param}. táblázat tartalmazza. Mivel képletgyűjtemény használható, a képleteket kihagytam a táblázatból, csak az alkalmazáshoz szükséges információkat gyűjtöttem itt össze.
+
+\begin{table}[h]
+\centering
+\caption{Paraméteres próbák}
+\label{tab:param}
+\begin{tabular}{|p{2,5cm}|p{5cm}|p{3cm}|}
+\hline
+\textbf{Próba neve}            & \textbf{Feltétel}                                                             & Döntés                   \\ \hline
+egymintás u-próba              & szórás ismert                                                                 & $|u_{próba}| < K_{krit}$ \\ \hline
+kétmintás u-próba              & független statisztikai minták, szórásaik ismertek                             & $|u_{próba}| < K_{krit}$ \\ \hline
+egymintás t-próba              & szórás nem ismert                                                             & $|t_{próba}| < K_{krit}$ \\ \hline
+független kétmintás t-próba    & minták függetlenek, szórásai egyenlőeknek tekintendők ($\rightarrow$ F-próba) & $|t_{próba}| < K_{krit}$ \\ \hline
+összetartozó kétmintás t-próba &                                                                               & $|t_{próba}| < K_{krit}$ \\ \hline
+Welch-próba                    & független, normális eloszlású minták, eltérő szórással (amik nem ismertek)    & $|W_{próba}| < K_{krit}$ \\ \hline
+F-próba                        & független, normális eloszlású minták, szórás nem ismert                       & tört $\in F_{n-1,m-1}$   \\ \hline
+\end{tabular}
+\end{table}
+
+\section{Nemparaméteres próbák}
+
+Nemparaméteres próbák esetén a statisztikai minta eloszlását nem tekintjük eleve ismertnek. Az előzetes feltevésink nagyon általánosak, pl. folytonos eloszlást követ minta, vagy véges a szórás. Mivel kevesebb feltételt követelünk meg kiinduláskor, nagyonn mintaelemszámra van szükségünk, mint a paraméteres próbák esetén.
+
+\subsubsection{Illeszkedés vizsgálat}
+
+Illeszkedés vizsgálat esetén azt vizsgáljuk, hogy az elemzett változó eloszlása megegyezik-e a hipotetikussal. Kapcsoló próbák: $\chi^2$-próba, egymintás Kolmogorov-Szmirnov próba.
+
+$\chi^2$ próba (tiszta illeszkedésvizsgálat) esetén a minta értékkészletét fel kell bontanunk $r$ diszjunk intervallumra. Ökölszabály: minden intervallumba kb. ugyanannyi elemnek kell esnie ($\theta_i$)! Minden intervallumra meg tudjuk mondani a bekövetkezés gyakoriságát ($p_i$). A kritikus érték a $\chi^2$ táblázatból jön.
+
+Egymintás Kolmogoroc-Szmirnov mintánál  az empirikus eloszlásfüggvénnyel $F_n(x)$ közelítjük a hipotetikus eloszlás függvényt $F_o(x)$. Kritikus értéket a Kolmogorov táblázatból nézhetünk.
+
+\subsubsection{Függetlenség vizsgálat}
+
+Azt vizsgáljuk, hogy az elemzett változók függetlennek tekinthetőek-e. Kapcsolódó próba: $\chi^2$ próba nominális vagy ordinális változókra.
+
+$\chi^2$ próba (kétdimentiós statisztikai minta) esetén a két mintát külön-külön intervallumokra osztjuk, majd az intervallumokból táblázatot készítünk. Itt is érvényes az 1D-s ökölszabály kiterjeszése: minden kitöltött cellában kb. azonos nagysegrendbe szerepeljenek értékek! A táblázat celláinak értéke $\theta_{ij}$, az adott sorhoz tartozó bekövetkezési valószínűség $p_i = \sum_{j=1}^s p_{ij}$, az oszlophoz $p_j= \sum_{i=1}^r p_{ij}$. A sorok száma $r$, az oszlopok száma $s$.
+
+\subsubsection{Homogenitás vizsgálat}
+
+Azt vizsgáljük, hogy az elemzett változók eloszlása azonos-e, vagyis az eloszlásfüggvények közösek-e. Kapcsolódó próbák: $\chi^2$ próba, kétmintás Kolmogorov-Szmirnov próba, Mann-Whitney próba, Wilcoxon próba, Kruskal-Wallis próba, Friedmann próba.
+
+$\chi^2$ próba esetén két mintarealizációnk van: $X$ elemszáma $n_1$, $Y$-é $n_2$. Az $X$ mintarealizációt $r$ intervallumra osztjuk. Összeszámoljuk, hogy hány minta esett egy-egy intervallumba az $X$ mintarealizációból ($\theta_i$) és mennyi az $Y$ mintarealizációból $\lambda_i$. Kritikus értéket a $\chi^2$ táblázatból tudunk nézni.
+
+Kétmintás Kolmogorov-Szmirnov próba esetén feltételezzük, hogy a minták függetlenek különböző eloszlásfüggvénnyel. A homogenitás vizsgálatához a minták empirikus eloszlásfüggvényeinek ($F_{n_1}(x)$ és $(F)_{n_2}(x)$  különbségét vizsgáljuk. Kritikus értéket a Kolmogorov táblázatban találunk.
+
+Mann-Whitney próba esetén az $X$ minta adatait két részre osztjuk egy $Y$ csoportképző változó segítségével, így kapjuk $x$ (elemszáma $n$) és $y$ (elemszáma $m$) részmintákat. A két minta összefésüléséból képezzük a $z_1^* \leq z_2^* \leq ... \leq z_{n+m}^*$ rendezett mintát. A rendezett minta elemeihez rangszámokat ($r_i$) rendelünk: a legkisebb elem rangszáma 1, a legnagyobbé $N=n+m$. Kritikus értéket a standard normális táblázatból kapjuk.
+
+Kruskal-Wallis próba esetén több független minta együttes homogenitás-vizsgálatát szeretnénk elvégezni. A nullhipotézisünk, hogy a $p$ független minta ugyanabból az eloszlásból származik-e. A $p$ független mintát és $Y$ tördelő változó segítségéven állítjuk elő az $X$ változó eseteiből, vagyis a $Y$ változó értékei $p$ csoportra osztják az $X$ minta eseteit ($n_j$ a csoport elemszáma, $N$ az összes csoport elemszámának összege). Ismét képezzük a rendezett mintát és az alapján az elemeket rangszámokkal látjuk el ($R_j$). Kritikus értéket a $\chi^2$ táblázatban találunk.
+
+Wilcoxon próba esetén azt ellenőrizzük, hogy az összetartozó mintákból készített adatmátrix $X$ és $Y$ változója azonos eloszlásfüggvényhez tartozik-e. Képezzük az összetartozó adatpárok különbségét ($d_i$), vegyük annak előjelét ($s_i$) és az eltérések abszolút értékét ($a_i$). CSináljunk az abszolút eltérésekből rendezett mintát ($a_i^*$) és ezekhez rendeljünk rangszámot. A pozitív differenciák rangszám-összege $R_+$. A kritikus értéket a standard normális táblázatban találjuk ($\Phi(u_\varepsilon) = 1-\frac{\varepsilon}{2}$).
+
+Friedmann próba esetén $p$ változó azonos eloszláshoz tartozását ellenőrizzük. Az adatmátrix minden sorához rangszámokat rendelünk, ahol a rangszám megadja, hogy az adott elem hagyadik legkisebb az adott sorban. $R^{(j)}$ az egyes oszlopokhoz tartozó rangszám-összeg. Kritikus értéket a $\chi^2$ táblázatban találunk, ha kicsi az elemszám.

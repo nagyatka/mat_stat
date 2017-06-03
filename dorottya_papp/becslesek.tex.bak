@@ -1,0 +1,66 @@
+\chapter{Statisztikai becslések}
+
+Előfordul, hogy a minta eloszlásfüggvénye egy képlet, amelyet a $\vartheta$ paraméter konkretizál. Ha ismerjük az értékét, meg tudjuk pontosan adni az eloszlásfüggvényt: 
+
+$\mathcal{F} = \{ F_x(t,\vartheta):\vartheta\in \Theta \}$
+
+Egy adott statisztikai minta segítségével a $\vartheta$ paraméter megbecslése a célunk. A paraméter becsléséhez valamilyen alkalmas $T_n$ statisztikát használunk, egy ismeretlen számot egy valószínűségi változóval becsülünk. Ekkor persze felvetődik a kérdés: mikor jó egy ilyen becslés?
+\begin{itemize}
+\item Torzítatlanság: $\mathbf{E}T_n=\vartheta$, vagyis a becslő statisztika pont a becsülendő paraméterérték körül fogja felvenni az értékeit. Indok: egy valószínűségi változó az összes szám körül épp a várható érték körül ingadozik a legkisebb mértékben
+	\begin{itemize}
+	\item Aszimptotikus torzítatlanság: a torzítatlansági feltétel csak $n \to \infty$ esetében igaz: $\lim_{n \to \infty} \mathbf{E}T_n = \vartheta$
+	\item A Cramer-Rao egyenlőtlenség elvi alsó korlátot ad a torzítatlan becslések szórásnégyzeteire. Ha egy statisztikára belátjuk, hogy a szórásnégyzete éppen az alsó korláttal egyenlő, akkor az biztosan hatásos (amiből egyetlen egy van)
+	\end{itemize}
+\item Konzisztencia: $\forall \epsilon >0 \text{ szám esetén teljesül, hogy } \lim_{n \to \infty}\mathbf{P}(|T_n-\vartheta|<\epsilon) = 0$, vagyis garancia van arra, hogy a minta elemszám növekedtével növekszik a becslés pontosságának valószínűsége
+	\begin{itemize}
+	\item Erős konzisztencia: $\mathbf{E}
+	T_n = \vartheta \text{ és } \lim_{n \to \infty} \mathbf{D}^2T_n = 0$, vagyis azok a torzítatlan becslések, ahol az elemszám növekedtével a szórásnégyzet (variancia) 0-hoz tart. Az erősen konzisztenc statisztikai becslések egyben konzisztensek is
+	\end{itemize}
+\item Hatásosság: két torzítatlan becslés közül a kisebb varianciájú a jobb, hiszen kisebb mértékben ingadozik a paraméter körül, vagyis kevesebb megfigyeléssel is jó becslés kapható. Egy torzítatlan becslés akkor lesz \emph{hatásos}, ha varianciája minden más torzítatlan becslés varianciájánál kisebb. Hatásos becslésből egyetlen egy létezik csak, ezt érdemes megkeresni egy adott paraméter-becslési problémához
+\item Elégségesség: egymaga képes helyettesíteni a mintát, a paraméterre vonatkozóan minden információt magába sűrít
+	\begin{itemize}
+	\item Rao-Blackwell-Kolmogorov tétel: ha létezik hatásos (legjobb torzítatlan) becslés, akkor elég azt az elégséges becslés függvényei között keresni
+	\item Ellenőrzini a Neymann-Fisher faktorizációs tétellel lehet
+	\end{itemize}
+\end{itemize}
+
+Jó tudni:
+\begin{itemize}
+\item Az átlagstatisztika a várható értéknek, mint paraméternek, a torzítatlan becslése (ha létezik a minta szórása, akkor erősen konzisztens), normális, exponenciális és Poisson esetben hatásos
+\item A tapasztalati szórásnégyzet a minta varianciájának aszimptotikusan torzítatlan becslése (ha létezik a minta negyedik momentuma, akkor konzisztens is)
+\item A korrigált empirikus szórásnégyzet statisztik a variancia torzítatlan becslése (ha létezik a minta negyedik momentuma, akkor erősen konzisztens), normális esetben hatásos
+\end{itemize}
+
+\section{Maximum likelihood becslés}
+
+A módszer alapgondolata, hogy ha egy kísérletnél több esemény is bekövetkezhet, akkor legtöbbször a legnagyobb valószínűségű esetményt fogjuk megfigyelni. A mintavételezés során kaptunk egy realizációt, errőr a realizációról pedig az előzőek miatt feltételezzük, hogy azért ezt kaptuk, mert ennek volt a legnagyobb bekövetkezési valószínűségee. Vagyis, az összes lehetséges $\vartheta$ paraméter (amitől függ a minta eloszlásfüggvénye) közül vegyük azt, amelynél a kapott realizáció bekövetkezése a maximális. Általános feltételed mellett a becslés konzisztens, aszimptotikusan normális eloszlású és ha van elégséges statisztikai, akkor éppen azt adja meg.
+
+Számítása diszkrét esetben:
+
+$
+L(\mathbf{x}, \vartheta) = P_\vartheta(X_1=x_1, X_2 = x_2, ..., X_n=x_n) = \sum_{i=1}^nP_\vartheta(X_i=x_i)$, a minta együttes eloszlása. A paraméter maximum likelhood becslése az a $\tau_n(X_1,X_2, ..., X_n)$ statisztika, melyre $L(x, \tau_n(\mathbf{x})) = \text{max}_\vartheta L(\mathbf{x}, \vartheta)
+$
+
+Számítása folytonos esetben:
+
+$
+L(\mathbf{x}, \vartheta) = P_\vartheta(X_1=x_1, X_2 = x_2, ..., X_n=x_n) = \prod_{i=1}^nf_\vartheta(x_i)$, a minta együttes eloszlása. A paraméter maximum likelhood becslése az a $\tau_n(X_1,X_2, ..., X_n)$ statisztika, melyre $L(x, \tau_n(\mathbf{x})) = \text{max}_\vartheta L(\mathbf{x}, \vartheta)
+$
+
+A maximum meghatározásához $L(\mathbf{x}, \vartheta)$ $\vartheta$ szerinti első deriváltjának zérushelyeit keressük. A zérushelyek közül az a maximum, ahol a második derivált negatív. Megjegyzés: ha $L(\mathbf{x}, \vartheta)$ deriválása túl nehéz, érdemes a logaritmusát venni (log-likehood függvény, $l(\mathbf{x}, \vartheta)$) és azzal számolni. Mivel a logaritmus függvény szigorúan monoton nő, ezért nem torzítja a zérushelyeket.
+
+Többparaméteres esetben paraméterenként vizsgáljuk az első deriváltakat és a Hesse-mátrix alapján döntünk a maximum helyről. Maximum esetén a mátrix diagonális és az első diagonál elem negatív.
+
+\section{A momentumok módszere}
+
+Legyen adott a valószínűségi mértékek egy tere és az $X_1, X_2, ..., X_n$ statisztikai minta. Tegyük fel, hogy létezik az első $k$ momentum: $m_j = \mathbf{E}_\mathbf{\vartheta}X_i^j = g_j(\vartheta)$, vagyis a momentumok a paraméter valamilyen $g()$ függvényeként állnak elő. Tegyük fel, hogy $\exists g_j^{-1}(m_1, m_2, ..., m_k) = \vartheta_j$. Tekintsük az $\hat{m}_j=\frac{1}{n}\sum_{i=1}^nX_i^j$ empirikus momentum statisztikákat. Ekkor  a $\vartheta_j$ paraméteres momentumos becslései a $m_j = g_j^{-1}(\hat{m}_1, \hat{m}_2, ...,\hat{m}_k)$
+
+\section{Intervallumbecslések}
+
+Eddig az ismeretlen paramétervektort a minta egy függvényével, azaz egyetlen statisztikával próbáltuk meg közelíteni. Konkrét realizációnál tehát, a paramétertér egy pontját egy másik ponttal becsüljük (\emph{pontbecslés}).
+
+Folytonos eloszlásoknál azonban annak valószínősége, hogy a valószínőségi változó az értékkészletének éppen egy tetszőlegesen kiválasztott pontját fogja felvenni, nulla. Tehát folytonos esetben nulla annak valószínősége, hogy éppen a paramétert találtuk el a becsléssel. Az intervallumbecsléseknél a mintából készített tartományokat definiálunk, amely tartományok nagy valószínőséggel lefedik a kérdéses paraméterpontot.
+
+Legyen adott a valószínésgi mértékeke egy tere és az $X_1, X_2, ..., X_n$ statisztikai minta. Legyen $0<\epsilon<1$ rögzített. A $\vartheta$ paraméterhez megadhatunk egy legalább $1-\epsilon$ szignifikanciaszintű konfidencia-intervallumot, ha $t_1(X_1, X_2, ..., X_n)$ és $t_2(X_1, X_2, ..., X_n)$ olyan statisztikák, hogy:
+
+$\mathbf{P}_\vartheta(t_1(X_1, X_2, ..., X_n) \leq \vartheta \leq t_2(X_1, X_2, ..., X_n)) \geq 1-\epsilon$ mindig igaz.
