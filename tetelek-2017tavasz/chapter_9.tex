@@ -14,7 +14,7 @@ A faktoranalízis csak akkor eredményes, ha a vizsgált változók között er�
 
 $KMO = \frac{\Sigma_{i=1}^p \Sigma_{j=1, j\neq i}^p R_{ij}^2}{\Sigma_{i=1}^p \Sigma_{j=1, j\neq i}^p \big(\frac{R_{ij}}{\sqrt{R_{ii}\cdot R_{jj}}} \big)^2 + \Sigma_{i=1}^p \Sigma_{j=1, j\neq i}^p R_{ij}^2}$
 
-\item \emph{Minta-alkalmassági érték (MSA):} megadja, hogy az indulási $p$ változóból melyikeket érdemes elhagyni (amelyeknél az $MSA_i$ érték a legkisebb). A statisztika képlete:
+\item \emph{Minta-alkalmassági érték ($MSA_i$):} megadja, hogy az indulási $p$ változóból melyikeket érdemes elhagyni (amelyeknél az $MSA_i$ érték a legkisebb). A statisztika képlete:
 
 $MSA_i = \frac{\Sigma_{i \neq j} R_{ij}^2}{\Sigma_{i \neq j} \big( \frac{R_{ij}}{\sqrt{R_{ii}\cdot R_{jj}}} \big)^2 + \Sigma_{i \neq j} R_{ij}^2}$, $i = (1,2,...,p)$
 
@@ -46,7 +46,7 @@ A modellel csak akkor érdemes tovább foglalkozni, ha
 \item $\underline{F}$ és $\underline{U}$ elemei páronként korrelálatlanok.
 \end{itemize}
 
-Egy $k$-faktoros modell pontosan akkor oldható meg, ha $\underline{X}$ kovariancia mátrixa megegyezik $\underline{\underline{A}} \cdot \underline{\underline{A}}^T +\underline{\underline{\Psi}}$, ahol $\Psi$ $\underline{U}$ kovariancia mátrixa. Ekkor van $p(p+1)/2$ egyenletünk és $p(k+1)$ ismeretlenünk. Amennyiben az egyenletrendszerben kevesebb az egyenlet, mint a változó, különböző kényszerfeltételeket adunk meg, amelyek más-más átviteli mátrixhoz vezetnek. Ezek közül azt választjuk, amelyiknek a legnagyobb a magyarázó ereje.
+Egy $k$-faktoros modell pontosan akkor oldható meg, ha $\underline{X}$ kovariancia mátrixa megegyezik $\underline{\underline{A}} \cdot \underline{\underline{A}}^T +\underline{\underline{\Psi}}$-vel, ahol $\Psi$ $\underline{U}$ kovariancia mátrixa. Ekkor van $p(p+1)/2$ egyenletünk és $p(k+1)$ ismeretlenünk. Amennyiben az egyenletrendszerben kevesebb az egyenlet, mint a változó, különböző kényszerfeltételeket adunk meg, amelyek más-más átviteli mátrixhoz vezetnek. Ezek közül azt választjuk, amelyiknek a legnagyobb a magyarázó ereje.
 
 Az átviteli mátrix együtthatói ($a_{ij}$) jelölik az $X_i$ és $F_j$ közötti kovarianciát, az $\frac{a_{ij}}{\mathbf{D}X_i}$ hányados a közöttük lévő korrelációt adja meg, a $\frac{\Sigma_{j=1}^k a^2_{ij}}{\mathbf{D}^2X_i}$ pedig megadja, hogy a közös faktorok az $i$-dik változó hány \%-át magyarázzák.
 
@@ -57,7 +57,7 @@ A \emph{kommunalitás} ($\mathbf{D}^2X_i = \Sigma_{j=1}^k a^2_{ij} + \mathbf{D}^
 Az átviteli mátrix egyértelművé tétele segíti a becslési eljárások matematikai elemzését, de az az ára, hogy a kapott közös faktorok nehezen értelmezhetőek. Alkalmas elforgatással esetleg szemléletesebb jelentést tudunk adni a faktoroknak:
 \begin{itemize}
 \item \emph{Varimax} forgatás esetén azon változók száma kevés lesz, melyekhez sok faktor szerepel nagy súllyal. Célja, hogy minél több 0-hoz közeli faktorsúlyt állítson elő. Ez azért előnyös, mert ha a faktorsúlyok 0-közeliek, akkor a változókat csoportosíthatjuk aszerint, hogy melyik faktor magyarázza őket a legjobban
-\item \emph{quartimax} forgatás a magyrázó faktorok számát minimalizálja
+\item \emph{quartimax} forgatás a magyarázó faktorok számát minimalizálja
 
 \item \emph{equamax} forgatás az előbbi két eljárás keverékét végzi.
 \end{itemize}

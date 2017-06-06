@@ -3,22 +3,21 @@
 
 \section{Maximum likelihood becslés}
 
-A módszer alapgondolata, hogy ha egy kísérletnél több esemény is bekövetkezhet, akkor legtöbbször a legnagyobb valószínűségű esetményt fogjuk megfigyelni. Következtetésképp, azért kaptuk azt a mintát, amit, mert ennek a bekövetkezésnek volt a legnagyobb a valószínűsége. Tehát, az összes lehetséges $\vartheta$ paraméter közül vegyük azt, amelynél a kapott realizáció bekövetkezése a maximális! Képletesen: a paraméter maximum likelhood becslése az a $\tau_n(X_1,X_2, ..., X_n)$ statisztika, melyre $L(x, \tau_n(\mathbf{x})) = \text{max}_\vartheta L(\mathbf{x}, \vartheta)
-$ \footnote{$L(\mathbf{x}, \vartheta)$ az együttes sűrűségfüggvény ($\sum_{i=1}^nP_\vartheta(X_i=x_i)$ diszkrét esetben és $\prod_{i=1}^nf_\vartheta(x_i)$ folytonos esetben.}.
+A módszer alapgondolata, hogy ha egy kísérletnél több esemény is bekövetkezhet, akkor legtöbbször a legnagyobb valószínűségű esetményt fogjuk megfigyelni. Következtetésképp, azért kaptuk azt a mintát, amit, mert ennek a bekövetkezésnek volt a legnagyobb a valószínűsége. Tehát, az összes lehetséges $\vartheta$ paraméter közül vegyük azt, amelynél a kapott realizáció bekövetkezése a maximális! Képletesen: a paraméter maximum likelhood becslése az a $t_n(X_1,X_2, ..., X_n)$ statisztika, melyre $L(x,t_n(\mathbf{x})) = \text{max}_\vartheta L(\mathbf{x}, \vartheta)$ \footnote{$L(\mathbf{x}, \vartheta)$ a likelihood-függvény ($\sum_{i=1}^nP_\vartheta(X_i=x_i)$ diszkrét esetben és $\prod_{i=1}^nf_\vartheta(x_i)$ folytonos esetben.}.
 
 A maximum meghatározásához $L(\mathbf{x}, \vartheta)$ $\vartheta$ szerinti első deriváltjának zérushelyeit keressük. A zérushelyek közül az a maximum, ahol a $L(\mathbf{x}, \vartheta)$ $\vartheta$ szerinti második deriváltja negatív. Megjegyzés: ha $L(\mathbf{x}, \vartheta)$ deriválása túl nehéz, érdemes a logaritmusát venni (log-likehood függvény, $l(\mathbf{x}, \vartheta)$) és azzal számolni. Mivel a logaritmus függvény szigorúan monoton nő, ezért nem torzítja a zérushelyeket. (Többparaméteres esetben paraméterenként vizsgáljuk az első deriváltakat és a Hesse-mátrix alapján döntünk a maximum helyről. Maximum esetén a mátrix diagonális és az első diagonál elem negatív.)
 
-\emph{Cramer-Dugue-tétel:} Tegyük fel, hogy $\tau_n$ a $\vartheta$ paraméter maximum-likelihood becslése. Legyen a minta sűrűségfüggvénye $f_\vartheta(x)$, $\vartheta \in (a,b)$, ami kielégíti az alábbi feltételeket:
+\emph{Cramer-Dugue-tétel:} Tegyük fel, hogy $t_n$ a $\vartheta$ paraméter maximum-likelihood becslése. Legyen a minta sűrűségfüggvénye $f_\vartheta(x)$, $\vartheta \in (a,b)$, ami kielégíti az alábbi feltételeket:
 \begin{itemize}
 \item létezik $ln \big(f_\vartheta(x) \big)$ első 3 deriváltja,
-\item létezik $H_1(x), H_2(x), H_3(x)$, amelyek az indexnek megfelelő deriváltak abszolút értékeinek felső becslései, $H_1(x)$ és $H_2(x)$ teljes számegyenesen vett integráltjai léteznek és $H_3(x) \cdot f_\vartheta(x)$ teljes számegyenesen vett integrálja felülről korlátos és
+\item létezik $H_1(x), H_2(x), H_3(x)$, amelyek az indexnek megfelelő deriváltak abszolút értékeinek felső becslései, $H_1(x)$ és $H_2(x)$ teljes számegyenesen vett integráltjai léteznek, $H_3(x) \cdot f_\vartheta(x)$ teljes számegyenesen vett integrálja felülről korlátos és
 \item $0<I_1(\vartheta)=\int_{- \infty}^{\infty} \big(\frac{\partial ln f_\vartheta(x)}{\partial \vartheta}\big)^2 \cdot f_\vartheta(x) dx < \infty$
 \end{itemize}
-Ekkor $\tau_n$ a $\vartheta$ paraméter konzisztens becslése és aszimptotikusan normális eloszlású. (Pluszban: ha létezik elégséges statisztika, akkor éppen azt adja meg, bár ez a tulajdonság nem tartozik a tételhez.)
+Ekkor $t_n$ a $\vartheta$ paraméter konzisztens becslése és aszimptotikusan normális eloszlású. (Pluszban: ha létezik elégséges statisztika, akkor éppen azt adja meg, bár ez a tulajdonság nem tartozik a tételhez.)
 
 \section{A momentumok módszere}
 
-Legyen adott a valószínűségi mértékek egy tere és az $X_1, X_2, ..., X_n$ statisztikai minta. Tegyük fel, hogy létezik az első $k$ momentum ($\mathbf{E}_\mathbf{\vartheta}X_i^j$), és $\exists g_j^{-1}(m_1, m_2, ..., m_k) = \vartheta_j$. Tekintsük az $\hat{m}_j=\frac{1}{n}\sum_{i=1}^nX_i^j$ empirikus momentum statisztikákat. Ekkor $m_j = g_j^{-1}(\hat{m}_1,..., \hat{m}_k)$ statisztikák a $\vartheta_j$ paraméterek momentumos becslései.
+Legyen adott a valószínűségi mértékek egy tere és az $X_1, X_2, ..., X_n$ statisztikai minta. Tegyük fel, hogy létezik az első $k$ momentum ($m_j = \mathbf{E}_\mathbf{\vartheta}X_i^j$), és $\exists g_j^{-1}(m_1, m_2, ..., m_k) = \vartheta_j$. Tekintsük az $\hat{m}_j=\frac{1}{n}\sum_{i=1}^nX_i^j$ empirikus momentum statisztikákat. Ekkor az $m_j = g_j^{-1}(\hat{m}_1,..., \hat{m}_k)$ statisztikák a $\vartheta_j$ paraméterek momentumos becslései.
 
 \section{Normális eloszlásból származtatott eloszlások}
 

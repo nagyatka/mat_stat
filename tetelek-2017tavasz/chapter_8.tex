@@ -9,7 +9,7 @@ A gyakorlatban azonban csak egy adatmátrix adott és a függvénykapcsolatot a 
 
 \section{Többváltozós lineáris regresszió}
 
-Többváltozós lineáris regressziónál a függő változót az $f(X_1, ...,X_p)= B_0 + B_1X_1 + ... + B_pX_p$ függvénnyel közelítjük. A lehetséges függvények közül azt választjuk, amelynél a függőváltozót legkisebb négyzetes hibával tudjuk közelíteni. A függvényt tetszőleges bonyolítani lehet, pl. kategória-változóval:
+Többváltozós lineáris regressziónál a függő változót az $f(X_1, ...,X_p)= B_0 + B_1X_1 + ... + B_pX_p$ függvénnyel közelítjük. A lehetséges függvények közül azt választjuk, amelynél a függőváltozót legkisebb négyzetes hibával tudjuk közelíteni. A függvényt tetszőlegesen bonyolítani is lehet, pl. kategória-változóval:
 
 $f(x) = 
   \begin{cases}
@@ -20,6 +20,7 @@ $f(x) =
     (B_0 + B_c) + (B_1+ B_{2c-1})X  & \quad \text{ha } K =c-1\\
   \end{cases}
 $
+
 Az együtthatókat itt is a legkisebb négyzetek módszerével határozzuk meg, lásd \ref{sec:reg1}. tétel.
 
 \section{Modellépítési technikák}
@@ -33,7 +34,7 @@ Az elemzés kezdetekor azonban még azt sem tudjuk, melyek azok a változók, am
 A szűkítésre az alábbi eljárások léteznek:
 \begin{itemize}
 \item \emph{ENTER:} a változólistában azok a független változók vannak, amiket szeretnénk bele tenni a modellbe. Az így készült modelleket utólag értékelni kell $R^2$ és regressziós együttható szignifikancia-szint szerint, majd a szükséges módosítások után újra elvégezni az illesztést
-\item \emph{FOREWARD:} alulról építkező modellépítési eljárás, minden lépésben azt a változót vonjuk be a modellbe, amelyik parciális F-próbájához a legkisebb $\epsilon$ tartozik. A bevonást addig folytatjuk, amíg a legkisebb $\epsilon$ egy megadott korlát alatt van. A mdószerrel viszonylag kevés magyarázó változónk lesz a modellben, így azt könnyebb értelmezni
+\item \emph{FOREWARD:} alulról építkező modellépítési eljárás, minden lépésben azt a változót vonjuk be a modellbe, amelyik parciális F-próbájához a legkisebb $\epsilon$ tartozik. A bevonást addig folytatjuk, amíg a legkisebb $\epsilon$ egy megadott korlát alatt van. A módszerrel viszonylag kevés magyarázó változónk lesz a modellben, így azt könnyebb értelmezni
 \item \emph{BACKWARD:} felülről lebontó eljárás, ami az összes változó közül hagyja el azokat a változónak, amiknek a legnagyobb az $\epsilon$ értékük. Megállunk, ha $\epsilon$ egy előre beállított küszöbérték alá esik. Ezzel a módszerrel viszonylag sok magyarázó változó marad a modellben
 \item \emph{STEPWISE:} a FOREWARD eljárás módosítása úgy, hogy minden lépésben ellenőrizzük, hogy a korábban már bevont változókhoz tartozó $\epsilon$ szignifikancia-szintek közül valamelyik átlép-e egy meghatározott korlátot. Ha valamelyiknél átlép, akkor azt a változók elhagyjuk
 \item \emph{REMOVE:} az ENTER eljárás beállításából indul ki, egyszerre hagy el változókat a modellból, összehasonlításként csak a konstans tagot tartalmazó modell eredményeit közli
@@ -67,7 +68,7 @@ A \emph{heteroszkedaszticitás} mutatja meg a maradéktagok nulla szint körüli
   \includegraphics[width=0.5\textwidth]{figures/heteroszkedaszticitas.png} \label{fig:hetero}
 \end{figure}
 
-A prediktor változókhoz rendelt \emph{$BETA$ együtthatók} minősítik a változók fontosságát az összefüggésben: minél nagyobb a $BETA$ egüttható abszolútértéke, annál fontosabb a változó. Az együtthatók meghatározása az alábbi összefüggés szerint törénik:
+A prediktor változókhoz rendelt \emph{$BETA$ együtthatók} minősítik a változók fontosságát az összefüggésben: minél nagyobb a $BETA$ egüttható abszolútértéke, annál fontosabb a változó. Az együtthatók meghatározása az alábbi összefüggés szerint történik:
 
 $BETA_i = b_i \cdot \frac{\text{i-dik változó standard szórása}}{\text{célváltozó standard szórása}}$, ahol $b_i$ a regressziós együttható
 

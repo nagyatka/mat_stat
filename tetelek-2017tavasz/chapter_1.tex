@@ -16,7 +16,7 @@ Az elemzésünk célja, hogy $\mathit{P}$-ből kiválasszuk a tényleges valósz
 
 \emph{Statisztikai minta:} Az $X$ valószínűségi változóval azonos eloszlású, egymással teljesen független $X_1$, $X_2$, ..., $X_n$ valószínűségi változók együttesét statisztikai mintának nevezzük. Egy mintavételkor tulajdonképpen megfigyeljük a $\mathcal{K}$ véletlen kísérletet, azaz megállpítjuk, hogy melyik $\omega \in \Omega$ lehetséges kimenet realizálódott. Az $X_1(\omega)=x_1..., X_n(\omega)=x_n$ szám $n$-est nevezzük a minta realizációjának.
 
-\emph{Statisztika:} Legyen $t_n$ egy $n$-változós valós függvény. A statisztikai minta $t_n(X_1, X_2, ..., X_n)$ függvényét nevezzük statisztikának. A statisztika egy valószínűségi változó, aminek eloszlásfüggvényét a minta eloszlásfüggványáből lehet kiszámolni. A $T_n = t_n(x_1, x_2, ..., x_n)$ szám a statisztika számolt értéke.
+\emph{Statisztika:} Legyen $t_n$ egy $n$-változós valós függvény. A statisztikai minta $t_n(X_1, X_2, ..., X_n)$ függvényét nevezzük statisztikának. A statisztika egy valószínűségi változó, aminek eloszlásfüggvényét a minta eloszlásfüggvényéből lehet kiszámolni. A $T_n = t_n(x_1, x_2, ..., x_n)$ szám a statisztika számolt értéke.
 
 \emph{Paraméter:} Tegyük fel, hogy a minta eloszlásfüggvényének képletét egy $\vartheta$ paraméter konkretizálja, pl. normális eloszlás várható értéke, szórása; binomiális eloszlás paraméterei ($n$ és $k$). Ha ismerjük a paraméter értékét, pontosan meg tudjuk adni az eloszlásfüggvényt $\rightarrow$ cél: adott statisztikai minta segítségével a $\vartheta$ paraméter becslése egy alkalmas statisztikával.
 
@@ -32,7 +32,7 @@ $F_{emp}(x) =
     1		& \quad \text{ha } x>X_n^* \end{cases}
 $, ahol $X_i^*$ a rendezett minta $i$-dik eleme
 
-\emph{Glivenkó-Cantelli tétel:} $P(\lim_{n\rightarrow \infty}\sup_{x\in\mathsf{R}}|F_{emp}(x)-F(x)|=0)=1$, vagyis az empirikus eloszlásfüggvény 1 valószínűséggel, egyenletesen konvergál az eloszlásfüggvényhez. (E miatt a tétel miatt van egyáltalán értelme beszélni a matematikai statisztikáról.)
+\emph{Glivenkó-Cantelli tétel:} $\mathbf{P}(\lim_{n\rightarrow \infty}\sup_{x\in\mathbb{R}}|F_{emp}(x)-F(x)|=0)=1$, vagyis az empirikus eloszlásfüggvény 1 valószínűséggel, egyenletesen konvergál az eloszlásfüggvényhez. (E miatt a tétel miatt van egyáltalán értelme beszélni a matematikai statisztikáról.)
 
 %----------------------------------------------------------------------------
 \section{A jó becslések tulajdonságai}

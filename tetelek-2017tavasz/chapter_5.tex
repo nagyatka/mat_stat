@@ -1,7 +1,7 @@
 %----------------------------------------------------------------------------
 \chapter{Szórásanalízis aka ANOVA}
 
-A célünk kideríteni, hogy van-e hatása a független változóknak a függő változóra illetve, hogy ez a hatás egyforma vagy különböző. A hatás, kapcsolat függvényszerű feltárása akkor sem cél, ha a független változók kvantitatívek. A szórásanalízis megelőzi a regressziós vizsgálatokat, megadja, hogy van-e értelme keresni az összefüggés jellegét. Alapfogalmak:
+A célünk kideríteni, hogy van-e hatása a független változóknak a függő változóra, illetve, hogy ez a hatás egyforma vagy különböző. A hatás, kapcsolat függvényszerű feltárása akkor sem cél, ha a független változók kvantitatívek. A szórásanalízis megelőzi a regressziós vizsgálatokat, megadja, hogy van-e értelme keresni az összefüggés jellegét. Alapfogalmak:
 \begin{itemize}
 \item \emph{Faktor:} a vizsgálatba bevont változók
 \begin{itemize}
@@ -29,7 +29,7 @@ A modelleket a faktorok száma szerint csoportosítjuk, így beszélhetünk egy-
 
 \emph{Hierarchikus osztályozás:} a faktorok hierarchiában vannak és egy faktor összes szintje a felette álló faktor egy szintjéhez kapcsolódik. Ilyen kísérleti beállítást követünk, amikor $p$ osztály tanulóinak tudását akarjuk összehasonlítani, $r$ különböző tantárgy számonkérésével.
 
-\emph{Keresztosztályozás:} Az $A$ és $B$ faktor szintjeinek minden párosításához veszünk egy- vagy többelemű mintát. Kettőnél több faktor esetén azon kezelés kombinációhoz veszünk mintát, ahol $k$ a faktorok száma.
+\emph{Keresztosztályozás:} Az $A$ és $B$ faktor szintjeinek minden párosításához veszünk egy- vagy többelemű mintát. Kettőnél több faktor esetén azon kezelés-kombinációhoz veszünk mintát, ahol $k$ a faktorok száma.
 
 \emph{Nem teljes kísérleti elrendezések:} olyankor alkalmazandó, amikor egy vizsgálandó faktor mellett más, nem kívánt, de számontartott hatás is fellép és azokat ki akarjuk küszöbölni, pl. a latin négyzetek módszerével. Tegyük fel, hogy a célváltozónkkal három kategóriaváltozó van kapcsolatban, mindegyik $r>1$ szinttel:
 \begin{itemize}
@@ -60,15 +60,13 @@ A módszer feltételezi, hogy a faktorok közötti interakciók nem jelentősek.
 \item Mintáknak függetleneknek kell lenniük
 \end{enumerate}
 
-Tekintsünk egy $H=(h_{ij})$ $r$x$r$-es latin négyzetet (mátrix, aminek minden sora és oszlopa $1,...,r$ véletlen permutációja)! A három faktor minden $(i, j, h_{ij})$ szintbeállítása mellett figyeljük meg a célváltozó értékét ($X_{ijh}$)! Feltesszük, hogy a $X_{ijh}$ változók teljesen független normális eloszlásúak és $\mathbf{E}X_{ijh}=f_h+b_i+c_j$, $\mathbf{\sigma}X_{ijh}=\sigma$, vagyis célváltozó várható értékére mindhárom faktor additív taggal van hatással.
+Tekintsünk egy $H=(h_{ij})$ $r$x$r$-es latin négyzetet (mátrix, aminek minden sora és oszlopa $1,...,r$ véletlen permutációja)! A három faktor minden $(i, j, h_{ij})$ szintbeállítása mellett figyeljük meg a célváltozó értékét ($X_{ijh}$)! Feltesszük, hogy a $X_{ijh}$ változók teljesen független normális eloszlásúak és $\mathbf{E}X_{ijh}=f_h+b_i+c_j$, $\mathbf{\sigma}X_{ijh}=\sigma$, vagyis a célváltozó várható értékére mindhárom faktor additív taggal van hatással.
 
-$H_0$: a harmadik faktor szintjei nincsenek hatással a célváltozóra, vagy $f_j$ mindenhol azonos.
+$H_0$: a harmadik faktor szintjei nincsenek hatással a célváltozóra, vagyis $f_h$ mindenhol azonos.
 
 A döntéshez a faktorok szintjeihez tartozó átlagok és a minta teljes átlagának négyzetes eltéréseit kell vizsgálni, valamit ki kell számolni a véletlen ingadozásokat kifejező négyzetes eltérést is. Amennyiben igaz a nullhipotézis, akkor a \\$\frac{\text{harmadik faktorhoz tartozó eltérések négyzetösszege}}{\text{véletlen ingadozásokat kifejező négyzetes eltérés}}(r-2)$ próbastatisztika \\$F_{(r-1),(r-1)(r-2)}$-eloszlást követ.
 
 \end{itemize}
-
-\pagebreak
 
 \section{Egyszeres osztályozás}
 
@@ -82,7 +80,7 @@ Amennyiben igaz a nullhipotézis, akkor a $\frac{\frac{\Sigma^L_{i=1}n_i \big(\b
 
 Ha egy folytonos függőváltozó, és két nominális faktorváltozó adott, kétszeres osztályozásról beszélünk. Tegyük fel hogy az egyik faktor értékei az $1, 2, ..., L$ a másik faktor értékei az $1, 2, ..., K$ közül valók. Így a mintát összesen $K$x$L$ részhalmazra bonthatjuk. Feltesszük, hogy a minták normális eloszlásúak és a szórásaik ismeretlenek, de azonos értékűek.
 
-Ha a két nominális faktorváltozó között nincs interakció, akkor feltesszük a $(j,k)$ cella elméleti várhatóértéke $\mu_{j,k} = a_j+g_k$ alakú, ahol az első tag az első faktor $j$ szintjéből, a második tag pedig a második faktor $k$ szintjéből eredő tag.
+Ha a két nominális faktorváltozó között nincs interakció, akkor feltesszük, hogy a $(j,k)$ cella elméleti várhatóértéke $\mu_{j,k} = a_j+g_k$ alakú, ahol az első tag az első faktor $j$ szintjéből, a második tag pedig a második faktor $k$ szintjéből eredő tag.
 
 $H_0$: Az első faktor szintjeihez ugyanakkora hatás tartozik minden cellában
 
@@ -90,7 +88,7 @@ Amennyiben igaz a nullhipotézis, akkor a
 $\frac{\frac{L \cdot \Sigma^L_{i=1}n_i \big(\bar{x}_i - \bar{x} \big)^2}{L-1}}{\frac{\text{véletlen ingadozásokat mérő négyzetösszeg}}{(L-1)(K-1)}}$
 statisztika\\ $F_{(L-1),(L-1)(K-1)}$ eloszlást követ. Vagyis, ha a nullhipotézist elfogadjuk, akkor az első faktornak nincsen hatása a célváltozóra.
 
-Ezzel az eljárással a második faktor hatását is tesztelhetjük, csak akkor a próbastatisztikában a felsző tört számlálójába $K \cdot \Sigma^K_{j=1}n_i \big(\bar{x}_j - \bar{x} \big)^2$ (a második faktor magyarázta négyzetösszeg) kerül.
+Ezzel az eljárással a második faktor hatását is tesztelhetjük, csak akkor a próbastatisztikában a felső tört számlálójába $K \cdot \Sigma^K_{j=1}n_i \big(\bar{x}_j - \bar{x} \big)^2$ (a második faktor magyarázta négyzetösszeg) kerül.
 
 Ha interakciót is feltételezünk a faktorok között, akkor a $(j,k)$ cella elméleti várhatóértéke $\mu_{j,k} = \mu + a_j+g_k + c_{i,j}$ alakú, ahol $c_{i,j}$ fejezi ki, hogy a hatások erősítik vagy gyengítik egymást. A módszer alkalmas egyidejűleg három hipotézis ellenőrzésére is:
 \begin{enumerate}

@@ -25,12 +25,12 @@ Példák regresszióra:
 
 \item \emph{Lineáris regresszió:} $f(X) = B_0 + B_1X$ Mivel a gakorlatban nem ismertek a változók momentumai, ezért az egyes paramétereket becsülni kell. Erre van a legkisebb négyzetek módszere:
 \begin{itemize}
-\item \emph{Legkisebb négyzetek módszere:} Adott az $(X_1,Y_1), ... (X_p,Y_p)$ statisztikai minta és az $F = {f(x,a,b,c,...)}$ $k$-paraméteres függvényosztály. A $\min\limits_{\forall a_1, ... a_k} \Sigma_{i=1}^p(Y_i - f(X_i; a_1, ..., a_k))^2$ szélsőérték feladat megoldásából kapjuk $B_i$-ket. Ez a módszer a legjobb tozítatlan becslést adja
+\item \emph{Legkisebb négyzetek módszere:} Adott az $(X_1,Y_1), ... (X_p,Y_p)$ statisztikai minta és az $F = {f(x,a,b,c,...)}$ $k$-paraméteres függvényosztály. A $B_i$-ket a $\min\limits_{\forall a_1, ... a_k} \Sigma_{i=1}^p(Y_i - f(X_i; a_1, ..., a_k))^2$ szélsőérték feladat megoldásából kapjuk. Ez a módszer a legjobb tozítatlan becslést adja
 \end{itemize}
 
-A lineáris kapcsolat kitüntetett, micel ez a legegyszerűbb és leggyakoribb, könnyű a két paramétert értelmezni, ráadásul kétdimenziós normális eloszlás esetén a kapcsolat nem is lehet más.
+A lineáris kapcsolat kitüntetett, mivel ez a legegyszerűbb és leggyakoribb, könnyű a két paramétert értelmezni, ráadásul kétdimenziós normális eloszlás esetén a kapcsolat nem is lehet más.
 
-\item \emph{Polinomiális regresszió:} $f(X_1, ..., X_p) = B_0 + B_1X+B_2X^2+ ...+ B_pX^p$, ahol $X_1 = X, X_2 = X^2, ... X_p = X^p$
+\item \emph{Polinomiális regresszió:} $f(X_1, ..., X_p) = B_0 + B_1X_1+B_2X_2+ ...+ B_pX_p$
 
 \item \emph{Kétparaméteres (lineárisra visszavezethető) regresszió:} pl. $Y=f(X)=B_0\cdot e^{B_1X} \rightarrow lnY = B_1X + lnB_0$
 
@@ -60,3 +60,5 @@ A regresszióval számolt \emph{modell érvényességét} eldönthetjük szórá
 A \emph{meghatározottsági együttható} (R-squared) megmutatja, hogy a lineáris regresszióval a célváltozó mekkora hányadát lehet magyarázni. Értéke 0 és 1 között változik, számítása:
 
 $R^2 = \frac{SSR = \Sigma_{i=1}^n\big(\tilde{Y}_i - \bar{Y}  \big)^2}{SSTO = \Sigma_{i=1}^n\big(Y_i - \bar{Y}  \big)^2}$
+
+\emph{SSR:} Sum of Squares (regression), \emph{SSTO:} Sum of Squares (Total).
